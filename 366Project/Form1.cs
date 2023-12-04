@@ -56,6 +56,15 @@ namespace _366Project
                         branchListBox.DataSource = dt;
                     }
 
+                    //initial branch population
+                    sqlQuery = "SELECT * FROM branch";
+                    using (NpgsqlDataAdapter adapter = new NpgsqlDataAdapter(sqlQuery, connection))
+                    {
+
+                        DataTable dt = new DataTable();
+                        adapter.Fill(dt);
+                        branchGridView.DataSource = dt;
+                    }
 
                     //initial books population
                     sqlQuery = "SELECT * FROM books WHERE branch_id=1";
@@ -423,6 +432,7 @@ namespace _366Project
             }
         }
 
+        //Function to check if a employee with the specified superviosr_ID exists
         private bool EmployeeExists(int supervisorID)
         {
             using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
@@ -693,6 +703,7 @@ namespace _366Project
             }
         }
 
+        //Create a Employee
         private void btnCreateEmployee_Click(object sender, EventArgs e)
         {
             decimal salary;
@@ -778,6 +789,7 @@ namespace _366Project
             }
         }
 
+        //Delete a Employee
         private void btnDeleteEmployee_Click(object sender, EventArgs e)
         {
             int employeeID;
@@ -823,8 +835,106 @@ namespace _366Project
             }
         }
 
+        //Create a Branch
+        private void btnCreateBranch_Click(object sender, EventArgs e)
+        {
+
+            string location = "";
 
 
+
+            //validation
+
+            if (!string.IsNullOrWhiteSpace(txtCreateBranchLocation.Text))
+            {
+                location = txtCreateBranchLocation.Text;
+            }
+            else
+                MessageBox.Show("Enter valid Location");
+
+
+
+
+
+            string createMemberQuery = "INSERT INTO branch (location) " +
+                                  "VALUES (@location)";
+
+            try
+            {
+                using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    using (NpgsqlCommand cmd = new NpgsqlCommand(createMemberQuery, connection))
+                    {
+
+                        cmd.Parameters.AddWithValue("@location", location);
+
+
+
+                        // Execute the query
+                        cmd.ExecuteNonQuery();
+                        connection.Close();
+                        populatePage();
+                    }
+                }
+            }
+            catch (NpgsqlException ex)
+            {
+                MessageBox.Show("PostgreSQL Connection Error: " + ex.Message);
+            }
+        }
+
+        private void btnDeleteBranch_Click(object sender, EventArgs e)
+        {
+            int branchID;
+
+            //validation
+            if (int.TryParse(txtDelteteBranchID.Text, out branchID) == true)
+            {
+                branchID = Convert.ToInt32(txtDelteteBranchID.Text);
+
+                if (!BranchExists(branchID))
+                {
+                    MessageBox.Show($"Branch with ID {branchID} does not exist.");
+                    return;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Enter valid number");
+            }
+
+
+            string deleteBranchQuery = "Delete from branch Where branch_id = @branchID";
+
+            try
+            {
+                using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
+                {
+                    connection.Open();
+
+
+
+                    using (NpgsqlCommand cmd = new NpgsqlCommand(deleteBranchQuery, connection))
+                    {
+
+                        cmd.Parameters.AddWithValue("@branchID", branchID);
+
+
+                        // Execute the query
+                        cmd.ExecuteNonQuery();
+                        connection.Close();
+
+                        populatePage();
+                    }
+                }
+            }
+            catch (NpgsqlException ex)
+            {
+                MessageBox.Show("PostgreSQL Connection Error: " + ex.Message);
+            }
+        }
     }
 
 

@@ -121,6 +121,16 @@
             this.label30 = new System.Windows.Forms.Label();
             this.btnDeleteEmployee = new System.Windows.Forms.Button();
             this.txtDeleteEmployeeID = new System.Windows.Forms.TextBox();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.branchGridView = new System.Windows.Forms.DataGridView();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.label31 = new System.Windows.Forms.Label();
+            this.btnCreateBranch = new System.Windows.Forms.Button();
+            this.txtCreateBranchLocation = new System.Windows.Forms.TextBox();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.label32 = new System.Windows.Forms.Label();
+            this.txtDelteteBranchID = new System.Windows.Forms.TextBox();
+            this.btnDeleteBranch = new System.Windows.Forms.Button();
             this.tabControl.SuspendLayout();
             this.booksTab.SuspendLayout();
             this.searchContainer.SuspendLayout();
@@ -139,6 +149,10 @@
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox6.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.branchGridView)).BeginInit();
+            this.groupBox7.SuspendLayout();
+            this.groupBox8.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl
@@ -149,6 +163,7 @@
             this.tabControl.Controls.Add(this.checkedOutTab);
             this.tabControl.Controls.Add(this.adminTab);
             this.tabControl.Controls.Add(this.checkoutTab);
+            this.tabControl.Controls.Add(this.tabPage1);
             this.tabControl.Location = new System.Drawing.Point(12, 41);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
@@ -1024,6 +1039,102 @@
             this.txtDeleteEmployeeID.Size = new System.Drawing.Size(100, 20);
             this.txtDeleteEmployeeID.TabIndex = 2;
             // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.groupBox8);
+            this.tabPage1.Controls.Add(this.groupBox7);
+            this.tabPage1.Controls.Add(this.branchGridView);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Size = new System.Drawing.Size(893, 583);
+            this.tabPage1.TabIndex = 6;
+            this.tabPage1.Text = "Branch";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // branchGridView
+            // 
+            this.branchGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.branchGridView.Location = new System.Drawing.Point(27, 16);
+            this.branchGridView.Name = "branchGridView";
+            this.branchGridView.Size = new System.Drawing.Size(829, 249);
+            this.branchGridView.TabIndex = 0;
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.txtCreateBranchLocation);
+            this.groupBox7.Controls.Add(this.btnCreateBranch);
+            this.groupBox7.Controls.Add(this.label31);
+            this.groupBox7.Location = new System.Drawing.Point(27, 290);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(200, 106);
+            this.groupBox7.TabIndex = 1;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Create";
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(17, 32);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(48, 13);
+            this.label31.TabIndex = 0;
+            this.label31.Text = "Location";
+            // 
+            // btnCreateBranch
+            // 
+            this.btnCreateBranch.Location = new System.Drawing.Point(20, 68);
+            this.btnCreateBranch.Name = "btnCreateBranch";
+            this.btnCreateBranch.Size = new System.Drawing.Size(161, 23);
+            this.btnCreateBranch.TabIndex = 1;
+            this.btnCreateBranch.Text = "Create a Branch";
+            this.btnCreateBranch.UseVisualStyleBackColor = true;
+            this.btnCreateBranch.Click += new System.EventHandler(this.btnCreateBranch_Click);
+            // 
+            // txtCreateBranchLocation
+            // 
+            this.txtCreateBranchLocation.Location = new System.Drawing.Point(84, 32);
+            this.txtCreateBranchLocation.Name = "txtCreateBranchLocation";
+            this.txtCreateBranchLocation.Size = new System.Drawing.Size(100, 20);
+            this.txtCreateBranchLocation.TabIndex = 2;
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.Controls.Add(this.btnDeleteBranch);
+            this.groupBox8.Controls.Add(this.txtDelteteBranchID);
+            this.groupBox8.Controls.Add(this.label32);
+            this.groupBox8.Location = new System.Drawing.Point(253, 290);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(200, 100);
+            this.groupBox8.TabIndex = 2;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "Delete";
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(21, 32);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(55, 13);
+            this.label32.TabIndex = 0;
+            this.label32.Text = "Branch ID";
+            // 
+            // txtDelteteBranchID
+            // 
+            this.txtDelteteBranchID.Location = new System.Drawing.Point(82, 29);
+            this.txtDelteteBranchID.Name = "txtDelteteBranchID";
+            this.txtDelteteBranchID.Size = new System.Drawing.Size(100, 20);
+            this.txtDelteteBranchID.TabIndex = 1;
+            // 
+            // btnDeleteBranch
+            // 
+            this.btnDeleteBranch.Location = new System.Drawing.Point(24, 68);
+            this.btnDeleteBranch.Name = "btnDeleteBranch";
+            this.btnDeleteBranch.Size = new System.Drawing.Size(158, 23);
+            this.btnDeleteBranch.TabIndex = 2;
+            this.btnDeleteBranch.Text = "Delete a Branch";
+            this.btnDeleteBranch.UseVisualStyleBackColor = true;
+            this.btnDeleteBranch.Click += new System.EventHandler(this.btnDeleteBranch_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1060,6 +1171,12 @@
             this.groupBox5.PerformLayout();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
+            this.tabPage1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.branchGridView)).EndInit();
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox8.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1158,6 +1275,16 @@
         private System.Windows.Forms.TextBox txtDeleteEmployeeID;
         private System.Windows.Forms.Button btnDeleteEmployee;
         private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.DataGridView branchGridView;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.TextBox txtCreateBranchLocation;
+        private System.Windows.Forms.Button btnCreateBranch;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.Button btnDeleteBranch;
+        private System.Windows.Forms.TextBox txtDelteteBranchID;
+        private System.Windows.Forms.Label label32;
     }
 }
 
