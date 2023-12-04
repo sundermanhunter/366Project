@@ -401,6 +401,7 @@ namespace _366Project
 
         // Function to check if a branch with the specified branchID exists
         private bool BranchExists(int branchID)
+
         {
             using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
             {
@@ -419,6 +420,28 @@ namespace _366Project
                 }
 
                
+            }
+        }
+
+        private bool EmployeeExists(int supervisorID)
+        {
+            using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
+            {
+                connection.Open();
+
+                string query = "SELECT COUNT(*) FROM employee WHERE emp_id = @supervisor_id";
+                using (NpgsqlCommand cmd = new NpgsqlCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@supervisor_id", supervisorID);
+
+                    int count = Convert.ToInt32(cmd.ExecuteScalar());
+
+                    connection.Close();
+
+                    return count > 0;
+                }
+
+
             }
         }
 
@@ -669,5 +692,140 @@ namespace _366Project
                 MessageBox.Show("PostgreSQL Connection Error: " + ex.Message);
             }
         }
+
+        private void btnCreateEmployee_Click(object sender, EventArgs e)
+        {
+            decimal salary;
+            string title = "";
+            int supervisorID;
+            int branchID;
+
+
+            //validation
+            if(decimal.TryParse(txtCreateEmployeeSalary.Text, out salary) == true)
+            {
+                salary = Convert.ToDecimal(txtCreateEmployeeSalary.Text);
+            }
+            if (!string.IsNullOrWhiteSpace(txtCreateEmployeeTitle.Text))
+            {
+                title = txtCreateEmployeeTitle.Text;
+            }
+            else
+                MessageBox.Show("Enter valid title");
+            if(int.TryParse(txtCreateEmployeeSupervisorID.Text, out supervisorID) == true)
+            {
+                supervisorID = Convert.ToInt32(txtCreateEmployeeSupervisorID.Text);
+
+                if (!EmployeeExists(supervisorID))
+                {
+                    MessageBox.Show($"Employee with ID {supervisorID} does not exist.");
+                    return;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Enter a valid Supervisor ID");
+                return; // Exit the method if validation fails
+            }
+
+            if (int.TryParse(txtCreateEmployeeBranchID.Text, out branchID) == true)
+            {
+                branchID = Convert.ToInt32(txtCreateEmployeeBranchID.Text);
+
+                if (!BranchExists(branchID))
+                {
+                    MessageBox.Show($"Branch with ID {branchID} does not exist.");
+                    return; // Exit the method if validation fails
+                }
+            }
+            else
+            {
+                MessageBox.Show("Enter a valid branch ID");
+                return; // Exit the method if validation fails
+            }
+
+
+
+
+            string createMemberQuery = "INSERT INTO employee (salary, title, supervisor, branch_id) " +
+                                  "VALUES (@salary, @title, @supervisorID, @branch_id)";
+
+            try
+            {
+                using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    using (NpgsqlCommand cmd = new NpgsqlCommand(createMemberQuery, connection))
+                    {
+
+                        cmd.Parameters.AddWithValue("@salary", salary);
+                        cmd.Parameters.AddWithValue("@title", $"{title}");
+                        cmd.Parameters.AddWithValue("@supervisorID", supervisorID);
+                        cmd.Parameters.AddWithValue("@branch_id", branchID);
+
+
+                        // Execute the query
+                        cmd.ExecuteNonQuery();
+                        connection.Close();
+                        populatePage();
+                    }
+                }
+            }
+            catch (NpgsqlException ex)
+            {
+                MessageBox.Show("PostgreSQL Connection Error: " + ex.Message);
+            }
+        }
+
+        private void btnDeleteEmployee_Click(object sender, EventArgs e)
+        {
+            int employeeID;
+
+            //validation
+            if (int.TryParse(txtDeleteEmployeeID.Text, out employeeID) == true)
+            {
+                employeeID = Convert.ToInt32(txtDeleteEmployeeID.Text);
+            }
+            else
+            {
+                MessageBox.Show("Enter valid number");
+            }
+
+
+            string deleteEmployeeQuery = "Delete from employee Where emp_id = @employeeID";
+
+            try
+            {
+                using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
+                {
+                    connection.Open();
+
+
+
+                    using (NpgsqlCommand cmd = new NpgsqlCommand(deleteEmployeeQuery, connection))
+                    {
+
+                        cmd.Parameters.AddWithValue("@employeeID", employeeID);
+
+
+                        // Execute the query
+                        cmd.ExecuteNonQuery();
+                        connection.Close();
+
+                        populatePage();
+                    }
+                }
+            }
+            catch (NpgsqlException ex)
+            {
+                MessageBox.Show("PostgreSQL Connection Error: " + ex.Message);
+            }
+        }
+
+
+
     }
+
+
 }

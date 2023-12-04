@@ -107,6 +107,20 @@
             this.label25 = new System.Windows.Forms.Label();
             this.txtDeleteMemberID = new System.Windows.Forms.TextBox();
             this.btnDeleteMember = new System.Windows.Forms.Button();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.btnCreateEmployee = new System.Windows.Forms.Button();
+            this.txtCreateEmployeeSalary = new System.Windows.Forms.TextBox();
+            this.txtCreateEmployeeTitle = new System.Windows.Forms.TextBox();
+            this.txtCreateEmployeeSupervisorID = new System.Windows.Forms.TextBox();
+            this.txtCreateEmployeeBranchID = new System.Windows.Forms.TextBox();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.label30 = new System.Windows.Forms.Label();
+            this.btnDeleteEmployee = new System.Windows.Forms.Button();
+            this.txtDeleteEmployeeID = new System.Windows.Forms.TextBox();
             this.tabControl.SuspendLayout();
             this.booksTab.SuspendLayout();
             this.searchContainer.SuspendLayout();
@@ -123,6 +137,8 @@
             this.gpDeleteBook.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl
@@ -409,6 +425,8 @@
             // 
             // employeeTab
             // 
+            this.employeeTab.Controls.Add(this.groupBox6);
+            this.employeeTab.Controls.Add(this.groupBox5);
             this.employeeTab.Controls.Add(this.groupBox2);
             this.employeeTab.Controls.Add(this.employeeGridView);
             this.employeeTab.Location = new System.Drawing.Point(4, 22);
@@ -876,6 +894,136 @@
             this.btnDeleteMember.UseVisualStyleBackColor = true;
             this.btnDeleteMember.Click += new System.EventHandler(this.btnDeleteMember_Click);
             // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.txtCreateEmployeeBranchID);
+            this.groupBox5.Controls.Add(this.txtCreateEmployeeSupervisorID);
+            this.groupBox5.Controls.Add(this.txtCreateEmployeeTitle);
+            this.groupBox5.Controls.Add(this.txtCreateEmployeeSalary);
+            this.groupBox5.Controls.Add(this.btnCreateEmployee);
+            this.groupBox5.Controls.Add(this.label29);
+            this.groupBox5.Controls.Add(this.label28);
+            this.groupBox5.Controls.Add(this.label27);
+            this.groupBox5.Controls.Add(this.label26);
+            this.groupBox5.Location = new System.Drawing.Point(287, 227);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(216, 162);
+            this.groupBox5.TabIndex = 6;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Create";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(19, 20);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(36, 13);
+            this.label26.TabIndex = 0;
+            this.label26.Text = "Salary";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(19, 48);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(27, 13);
+            this.label27.TabIndex = 1;
+            this.label27.Text = "Title";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(19, 74);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(68, 13);
+            this.label28.TabIndex = 2;
+            this.label28.Text = "SupervisorID";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(22, 99);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(52, 13);
+            this.label29.TabIndex = 3;
+            this.label29.Text = "BranchID";
+            // 
+            // btnCreateEmployee
+            // 
+            this.btnCreateEmployee.Location = new System.Drawing.Point(22, 128);
+            this.btnCreateEmployee.Name = "btnCreateEmployee";
+            this.btnCreateEmployee.Size = new System.Drawing.Size(177, 23);
+            this.btnCreateEmployee.TabIndex = 4;
+            this.btnCreateEmployee.Text = "Create a Employee";
+            this.btnCreateEmployee.UseVisualStyleBackColor = true;
+            this.btnCreateEmployee.Click += new System.EventHandler(this.btnCreateEmployee_Click);
+            // 
+            // txtCreateEmployeeSalary
+            // 
+            this.txtCreateEmployeeSalary.Location = new System.Drawing.Point(108, 20);
+            this.txtCreateEmployeeSalary.Name = "txtCreateEmployeeSalary";
+            this.txtCreateEmployeeSalary.Size = new System.Drawing.Size(100, 20);
+            this.txtCreateEmployeeSalary.TabIndex = 5;
+            // 
+            // txtCreateEmployeeTitle
+            // 
+            this.txtCreateEmployeeTitle.Location = new System.Drawing.Point(108, 48);
+            this.txtCreateEmployeeTitle.Name = "txtCreateEmployeeTitle";
+            this.txtCreateEmployeeTitle.Size = new System.Drawing.Size(100, 20);
+            this.txtCreateEmployeeTitle.TabIndex = 6;
+            // 
+            // txtCreateEmployeeSupervisorID
+            // 
+            this.txtCreateEmployeeSupervisorID.Location = new System.Drawing.Point(108, 75);
+            this.txtCreateEmployeeSupervisorID.Name = "txtCreateEmployeeSupervisorID";
+            this.txtCreateEmployeeSupervisorID.Size = new System.Drawing.Size(100, 20);
+            this.txtCreateEmployeeSupervisorID.TabIndex = 7;
+            // 
+            // txtCreateEmployeeBranchID
+            // 
+            this.txtCreateEmployeeBranchID.Location = new System.Drawing.Point(108, 102);
+            this.txtCreateEmployeeBranchID.Name = "txtCreateEmployeeBranchID";
+            this.txtCreateEmployeeBranchID.Size = new System.Drawing.Size(100, 20);
+            this.txtCreateEmployeeBranchID.TabIndex = 8;
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.txtDeleteEmployeeID);
+            this.groupBox6.Controls.Add(this.btnDeleteEmployee);
+            this.groupBox6.Controls.Add(this.label30);
+            this.groupBox6.Location = new System.Drawing.Point(519, 227);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(200, 100);
+            this.groupBox6.TabIndex = 7;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Delete";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(17, 26);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(64, 13);
+            this.label30.TabIndex = 0;
+            this.label30.Text = "EmployeeID";
+            // 
+            // btnDeleteEmployee
+            // 
+            this.btnDeleteEmployee.Location = new System.Drawing.Point(20, 59);
+            this.btnDeleteEmployee.Name = "btnDeleteEmployee";
+            this.btnDeleteEmployee.Size = new System.Drawing.Size(168, 23);
+            this.btnDeleteEmployee.TabIndex = 1;
+            this.btnDeleteEmployee.Text = "Delete";
+            this.btnDeleteEmployee.UseVisualStyleBackColor = true;
+            this.btnDeleteEmployee.Click += new System.EventHandler(this.btnDeleteEmployee_Click);
+            // 
+            // txtDeleteEmployeeID
+            // 
+            this.txtDeleteEmployeeID.Location = new System.Drawing.Point(88, 26);
+            this.txtDeleteEmployeeID.Name = "txtDeleteEmployeeID";
+            this.txtDeleteEmployeeID.Size = new System.Drawing.Size(100, 20);
+            this.txtDeleteEmployeeID.TabIndex = 2;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -908,6 +1056,10 @@
             this.groupBox3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -992,6 +1144,20 @@
         private System.Windows.Forms.Button btnDeleteMember;
         private System.Windows.Forms.TextBox txtDeleteMemberID;
         private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.TextBox txtCreateEmployeeBranchID;
+        private System.Windows.Forms.TextBox txtCreateEmployeeSupervisorID;
+        private System.Windows.Forms.TextBox txtCreateEmployeeTitle;
+        private System.Windows.Forms.TextBox txtCreateEmployeeSalary;
+        private System.Windows.Forms.Button btnCreateEmployee;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.TextBox txtDeleteEmployeeID;
+        private System.Windows.Forms.Button btnDeleteEmployee;
+        private System.Windows.Forms.Label label30;
     }
 }
 
