@@ -59,6 +59,8 @@
             this.membersGridView = new System.Windows.Forms.DataGridView();
             this.employeeTab = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.empNameTextBox = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.employeeClear = new System.Windows.Forms.Button();
             this.employeeSearch = new System.Windows.Forms.Button();
             this.empTitleSearchBox = new System.Windows.Forms.TextBox();
@@ -69,12 +71,30 @@
             this.label9 = new System.Windows.Forms.Label();
             this.employeeGridView = new System.Windows.Forms.DataGridView();
             this.checkedOutTab = new System.Windows.Forms.TabPage();
+            this.checkedOutGridView = new System.Windows.Forms.DataGridView();
             this.adminTab = new System.Windows.Forms.TabPage();
             this.checkoutTab = new System.Windows.Forms.TabPage();
             this.branchListBox = new System.Windows.Forms.ListBox();
-            this.empNameTextBox = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.checkedOutGridView = new System.Windows.Forms.DataGridView();
+            this.AddContainer = new System.Windows.Forms.GroupBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.txtAddTitle = new System.Windows.Forms.TextBox();
+            this.txtAddAuthor = new System.Windows.Forms.TextBox();
+            this.txtAddISBN = new System.Windows.Forms.TextBox();
+            this.txtAddBranchID = new System.Windows.Forms.TextBox();
+            this.txtAddRating = new System.Windows.Forms.TextBox();
+            this.txtAddCopies = new System.Windows.Forms.TextBox();
+            this.cbAddCopiesAvilable = new System.Windows.Forms.CheckBox();
+            this.btnAddBook = new System.Windows.Forms.Button();
+            this.gpDeleteBook = new System.Windows.Forms.GroupBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.txtDeleteBookId = new System.Windows.Forms.TextBox();
+            this.btnDeleteBook = new System.Windows.Forms.Button();
             this.tabControl.SuspendLayout();
             this.booksTab.SuspendLayout();
             this.searchContainer.SuspendLayout();
@@ -87,6 +107,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.employeeGridView)).BeginInit();
             this.checkedOutTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.checkedOutGridView)).BeginInit();
+            this.AddContainer.SuspendLayout();
+            this.gpDeleteBook.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl
@@ -105,6 +127,8 @@
             // 
             // booksTab
             // 
+            this.booksTab.Controls.Add(this.gpDeleteBook);
+            this.booksTab.Controls.Add(this.AddContainer);
             this.booksTab.Controls.Add(this.searchContainer);
             this.booksTab.Controls.Add(this.booksGridView);
             this.booksTab.Location = new System.Drawing.Point(4, 22);
@@ -398,6 +422,22 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Search";
             // 
+            // empNameTextBox
+            // 
+            this.empNameTextBox.Location = new System.Drawing.Point(77, 42);
+            this.empNameTextBox.Name = "empNameTextBox";
+            this.empNameTextBox.Size = new System.Drawing.Size(146, 20);
+            this.empNameTextBox.TabIndex = 13;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(36, 42);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(35, 13);
+            this.label13.TabIndex = 12;
+            this.label13.Text = "Name";
+            // 
             // employeeClear
             // 
             this.employeeClear.Location = new System.Drawing.Point(128, 120);
@@ -485,6 +525,14 @@
             this.checkedOutTab.Text = "Checked Out";
             this.checkedOutTab.UseVisualStyleBackColor = true;
             // 
+            // checkedOutGridView
+            // 
+            this.checkedOutGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.checkedOutGridView.Location = new System.Drawing.Point(13, 6);
+            this.checkedOutGridView.Name = "checkedOutGridView";
+            this.checkedOutGridView.Size = new System.Drawing.Size(512, 544);
+            this.checkedOutGridView.TabIndex = 0;
+            // 
             // adminTab
             // 
             this.adminTab.Location = new System.Drawing.Point(4, 22);
@@ -514,29 +562,191 @@
             this.branchListBox.TabIndex = 2;
             this.branchListBox.SelectedIndexChanged += new System.EventHandler(this.branchListBox_SelectedIndexChanged);
             // 
-            // empNameTextBox
+            // AddContainer
             // 
-            this.empNameTextBox.Location = new System.Drawing.Point(77, 42);
-            this.empNameTextBox.Name = "empNameTextBox";
-            this.empNameTextBox.Size = new System.Drawing.Size(146, 20);
-            this.empNameTextBox.TabIndex = 13;
+            this.AddContainer.Controls.Add(this.btnAddBook);
+            this.AddContainer.Controls.Add(this.cbAddCopiesAvilable);
+            this.AddContainer.Controls.Add(this.txtAddCopies);
+            this.AddContainer.Controls.Add(this.txtAddRating);
+            this.AddContainer.Controls.Add(this.txtAddBranchID);
+            this.AddContainer.Controls.Add(this.txtAddISBN);
+            this.AddContainer.Controls.Add(this.txtAddAuthor);
+            this.AddContainer.Controls.Add(this.txtAddTitle);
+            this.AddContainer.Controls.Add(this.label20);
+            this.AddContainer.Controls.Add(this.label19);
+            this.AddContainer.Controls.Add(this.label18);
+            this.AddContainer.Controls.Add(this.label17);
+            this.AddContainer.Controls.Add(this.label16);
+            this.AddContainer.Controls.Add(this.label15);
+            this.AddContainer.Controls.Add(this.label14);
+            this.AddContainer.Location = new System.Drawing.Point(271, 218);
+            this.AddContainer.Name = "AddContainer";
+            this.AddContainer.Size = new System.Drawing.Size(228, 252);
+            this.AddContainer.TabIndex = 2;
+            this.AddContainer.TabStop = false;
+            this.AddContainer.Text = "Add";
             // 
-            // label13
+            // label14
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(36, 42);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(35, 13);
-            this.label13.TabIndex = 12;
-            this.label13.Text = "Name";
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(7, 19);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(27, 13);
+            this.label14.TabIndex = 0;
+            this.label14.Text = "Title";
             // 
-            // checkedOutGridView
+            // label15
             // 
-            this.checkedOutGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.checkedOutGridView.Location = new System.Drawing.Point(13, 6);
-            this.checkedOutGridView.Name = "checkedOutGridView";
-            this.checkedOutGridView.Size = new System.Drawing.Size(512, 544);
-            this.checkedOutGridView.TabIndex = 0;
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(7, 42);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(38, 13);
+            this.label15.TabIndex = 1;
+            this.label15.Text = "Author";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(7, 71);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(32, 13);
+            this.label16.TabIndex = 2;
+            this.label16.Text = "ISBN";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(7, 99);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(40, 13);
+            this.label17.TabIndex = 3;
+            this.label17.Text = "branch";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(7, 129);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(38, 13);
+            this.label18.TabIndex = 4;
+            this.label18.Text = "Rating";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(7, 164);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(39, 13);
+            this.label19.TabIndex = 5;
+            this.label19.Text = "Copies";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(10, 193);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(80, 13);
+            this.label20.TabIndex = 6;
+            this.label20.Text = "copies_avilable";
+            // 
+            // txtAddTitle
+            // 
+            this.txtAddTitle.Location = new System.Drawing.Point(86, 19);
+            this.txtAddTitle.Name = "txtAddTitle";
+            this.txtAddTitle.Size = new System.Drawing.Size(100, 20);
+            this.txtAddTitle.TabIndex = 7;
+            // 
+            // txtAddAuthor
+            // 
+            this.txtAddAuthor.Location = new System.Drawing.Point(86, 46);
+            this.txtAddAuthor.Name = "txtAddAuthor";
+            this.txtAddAuthor.Size = new System.Drawing.Size(100, 20);
+            this.txtAddAuthor.TabIndex = 8;
+            // 
+            // txtAddISBN
+            // 
+            this.txtAddISBN.Location = new System.Drawing.Point(86, 70);
+            this.txtAddISBN.Name = "txtAddISBN";
+            this.txtAddISBN.Size = new System.Drawing.Size(100, 20);
+            this.txtAddISBN.TabIndex = 9;
+            // 
+            // txtAddBranchID
+            // 
+            this.txtAddBranchID.Location = new System.Drawing.Point(86, 102);
+            this.txtAddBranchID.Name = "txtAddBranchID";
+            this.txtAddBranchID.Size = new System.Drawing.Size(100, 20);
+            this.txtAddBranchID.TabIndex = 10;
+            // 
+            // txtAddRating
+            // 
+            this.txtAddRating.Location = new System.Drawing.Point(86, 128);
+            this.txtAddRating.Name = "txtAddRating";
+            this.txtAddRating.Size = new System.Drawing.Size(100, 20);
+            this.txtAddRating.TabIndex = 11;
+            // 
+            // txtAddCopies
+            // 
+            this.txtAddCopies.Location = new System.Drawing.Point(86, 164);
+            this.txtAddCopies.Name = "txtAddCopies";
+            this.txtAddCopies.Size = new System.Drawing.Size(100, 20);
+            this.txtAddCopies.TabIndex = 12;
+            // 
+            // cbAddCopiesAvilable
+            // 
+            this.cbAddCopiesAvilable.AutoSize = true;
+            this.cbAddCopiesAvilable.Location = new System.Drawing.Point(97, 193);
+            this.cbAddCopiesAvilable.Name = "cbAddCopiesAvilable";
+            this.cbAddCopiesAvilable.Size = new System.Drawing.Size(15, 14);
+            this.cbAddCopiesAvilable.TabIndex = 13;
+            this.cbAddCopiesAvilable.UseVisualStyleBackColor = true;
+            // 
+            // btnAddBook
+            // 
+            this.btnAddBook.Location = new System.Drawing.Point(13, 220);
+            this.btnAddBook.Name = "btnAddBook";
+            this.btnAddBook.Size = new System.Drawing.Size(198, 23);
+            this.btnAddBook.TabIndex = 14;
+            this.btnAddBook.Text = "Add a Book";
+            this.btnAddBook.UseVisualStyleBackColor = true;
+            this.btnAddBook.Click += new System.EventHandler(this.btnAddBook_Click);
+            // 
+            // gpDeleteBook
+            // 
+            this.gpDeleteBook.Controls.Add(this.btnDeleteBook);
+            this.gpDeleteBook.Controls.Add(this.txtDeleteBookId);
+            this.gpDeleteBook.Controls.Add(this.label21);
+            this.gpDeleteBook.Location = new System.Drawing.Point(533, 218);
+            this.gpDeleteBook.Name = "gpDeleteBook";
+            this.gpDeleteBook.Size = new System.Drawing.Size(200, 115);
+            this.gpDeleteBook.TabIndex = 3;
+            this.gpDeleteBook.TabStop = false;
+            this.gpDeleteBook.Text = "Delete";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(20, 41);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(46, 13);
+            this.label21.TabIndex = 0;
+            this.label21.Text = "Book ID";
+            // 
+            // txtDeleteBookId
+            // 
+            this.txtDeleteBookId.Location = new System.Drawing.Point(82, 41);
+            this.txtDeleteBookId.Name = "txtDeleteBookId";
+            this.txtDeleteBookId.Size = new System.Drawing.Size(100, 20);
+            this.txtDeleteBookId.TabIndex = 1;
+            // 
+            // btnDeleteBook
+            // 
+            this.btnDeleteBook.Location = new System.Drawing.Point(23, 74);
+            this.btnDeleteBook.Name = "btnDeleteBook";
+            this.btnDeleteBook.Size = new System.Drawing.Size(159, 23);
+            this.btnDeleteBook.TabIndex = 2;
+            this.btnDeleteBook.Text = "Delte a Book";
+            this.btnDeleteBook.UseVisualStyleBackColor = true;
+            this.btnDeleteBook.Click += new System.EventHandler(this.btnDeleteBook_Click);
             // 
             // Form1
             // 
@@ -562,6 +772,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.employeeGridView)).EndInit();
             this.checkedOutTab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.checkedOutGridView)).EndInit();
+            this.AddContainer.ResumeLayout(false);
+            this.AddContainer.PerformLayout();
+            this.gpDeleteBook.ResumeLayout(false);
+            this.gpDeleteBook.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -614,6 +828,26 @@
         private System.Windows.Forms.TextBox empNameTextBox;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.DataGridView checkedOutGridView;
+        private System.Windows.Forms.GroupBox AddContainer;
+        private System.Windows.Forms.Button btnAddBook;
+        private System.Windows.Forms.CheckBox cbAddCopiesAvilable;
+        private System.Windows.Forms.TextBox txtAddCopies;
+        private System.Windows.Forms.TextBox txtAddRating;
+        private System.Windows.Forms.TextBox txtAddBranchID;
+        private System.Windows.Forms.TextBox txtAddISBN;
+        private System.Windows.Forms.TextBox txtAddAuthor;
+        private System.Windows.Forms.TextBox txtAddTitle;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.GroupBox gpDeleteBook;
+        private System.Windows.Forms.Button btnDeleteBook;
+        private System.Windows.Forms.TextBox txtDeleteBookId;
+        private System.Windows.Forms.Label label21;
     }
 }
 

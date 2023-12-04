@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Configuration;
 using Npgsql;
+using System.Xml.Linq;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TreeView;
 
 namespace _366Project
 {
@@ -22,7 +24,7 @@ namespace _366Project
         public Form1()
         {
             InitializeComponent();
-            connectionString = "Server=localhost;Port=5432;User Id=postgres;Password=61926192;Database=366Database;"; ;
+            connectionString = "Server=localhost;Port=5432;User Id=postgres;Password=0655;Database=Library;"; ;
 
 
 
@@ -393,6 +395,125 @@ namespace _366Project
         private void employeeClear_Click(object sender, EventArgs e)
         {
             populatePage();
+        }
+
+        private void btnAddBook_Click(object sender, EventArgs e)
+        {
+            string title ="";
+            string author ="";
+            int isbn;
+            int branchID;
+            int rating;
+            int copies;
+            Boolean avilable = false;
+
+            //validation
+            if (!string.IsNullOrWhiteSpace(txtAddTitle.Text))
+            {
+                title = txtAddTitle.Text;
+            }
+            if (!string.IsNullOrWhiteSpace(txtAddAuthor.Text))
+            {
+                 author = txtAddAuthor.Text;
+            }
+            if (int.TryParse(txtAddISBN.Text, out isbn) == true)
+            {
+                isbn = Convert.ToInt32(txtAddISBN.Text);
+            }
+            if (int.TryParse(txtAddBranchID.Text, out branchID) == true)
+            {
+                isbn = Convert.ToInt32(txtAddBranchID.Text);
+            }
+            if (int.TryParse(txtAddRating.Text, out rating) == true)
+            {
+                isbn = Convert.ToInt32(txtAddRating.Text);
+            }
+            if (int.TryParse(txtAddCopies.Text, out copies) == true)
+            {
+                isbn = Convert.ToInt32(txtAddCopies.Text);
+            }
+            if (cbAddCopiesAvilable.Checked == true)
+            {
+                avilable = true;
+            }
+
+
+            string addBookQuery = "INSERT INTO books (title, author, ISBN, branch_id, rating, copies, copies_avilable) " +
+                                  "VALUES (@title, @author, @ISBN, @branch_id, @rating, @copies, @copies_avilable)";
+
+            try
+            {
+                using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    using (NpgsqlCommand cmd = new NpgsqlCommand(addBookQuery, connection))
+                    {
+                       
+                        cmd.Parameters.AddWithValue("@title", $"{title}");
+                        cmd.Parameters.AddWithValue("@author", $"{author}");
+                        cmd.Parameters.AddWithValue("@ISBN", isbn);
+                        cmd.Parameters.AddWithValue("@branch_id", branchID);
+                        cmd.Parameters.AddWithValue("@rating", rating);
+                        cmd.Parameters.AddWithValue("@copies", copies);
+                        cmd.Parameters.AddWithValue("@copies_avilable", avilable);
+
+                        // Execute the query
+                        cmd.ExecuteNonQuery();
+                        connection.Close();
+                        populatePage();
+                    }
+                }
+            }
+            catch (NpgsqlException ex)
+            {
+                MessageBox.Show("PostgreSQL Connection Error: " + ex.Message);
+            }
+
+        }
+
+        private void btnDeleteBook_Click(object sender, EventArgs e)
+        {
+            int bookId;
+
+            //validation
+            if (int.TryParse(txtDeleteBookId.Text, out bookId
+                ) == true)
+            {
+                bookId = Convert.ToInt32(txtDeleteBookId.Text);
+            }
+            else
+            {
+                MessageBox.Show("Enter valid number");
+            }
+
+            string deleteBookQuery = "Delete from books Where book_id = @book_id";
+
+            try
+            {
+                using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    using (NpgsqlCommand cmd = new NpgsqlCommand(deleteBookQuery, connection))
+                    {
+                        
+                        cmd.Parameters.AddWithValue("@book_id", bookId);
+  
+
+                        // Execute the query
+                        cmd.ExecuteNonQuery();
+                        connection.Close();
+
+                        populatePage();
+                    }
+                }
+            }
+            catch (NpgsqlException ex)
+            {
+                MessageBox.Show("PostgreSQL Connection Error: " + ex.Message);
+            }
+
         }
     }
 }
