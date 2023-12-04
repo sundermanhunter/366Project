@@ -59,6 +59,8 @@
             this.membersGridView = new System.Windows.Forms.DataGridView();
             this.employeeTab = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.empNameTextBox = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.employeeClear = new System.Windows.Forms.Button();
             this.employeeSearch = new System.Windows.Forms.Button();
             this.empTitleSearchBox = new System.Windows.Forms.TextBox();
@@ -69,12 +71,73 @@
             this.label9 = new System.Windows.Forms.Label();
             this.employeeGridView = new System.Windows.Forms.DataGridView();
             this.checkedOutTab = new System.Windows.Forms.TabPage();
+            this.checkedOutGridView = new System.Windows.Forms.DataGridView();
             this.adminTab = new System.Windows.Forms.TabPage();
             this.checkoutTab = new System.Windows.Forms.TabPage();
             this.branchListBox = new System.Windows.Forms.ListBox();
-            this.empNameTextBox = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.checkedOutGridView = new System.Windows.Forms.DataGridView();
+            this.AddContainer = new System.Windows.Forms.GroupBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.txtAddTitle = new System.Windows.Forms.TextBox();
+            this.txtAddAuthor = new System.Windows.Forms.TextBox();
+            this.txtAddISBN = new System.Windows.Forms.TextBox();
+            this.txtAddBranchID = new System.Windows.Forms.TextBox();
+            this.txtAddRating = new System.Windows.Forms.TextBox();
+            this.txtAddCopies = new System.Windows.Forms.TextBox();
+            this.cbAddCopiesAvilable = new System.Windows.Forms.CheckBox();
+            this.btnAddBook = new System.Windows.Forms.Button();
+            this.gpDeleteBook = new System.Windows.Forms.GroupBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.txtDeleteBookId = new System.Windows.Forms.TextBox();
+            this.btnDeleteBook = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.btnCreateMember = new System.Windows.Forms.Button();
+            this.txtCreateMemberName = new System.Windows.Forms.TextBox();
+            this.txtCreateMemberAddress = new System.Windows.Forms.TextBox();
+            this.txtCreateMemberBranchID = new System.Windows.Forms.TextBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.txtDeleteMemberID = new System.Windows.Forms.TextBox();
+            this.btnDeleteMember = new System.Windows.Forms.Button();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.btnCreateEmployee = new System.Windows.Forms.Button();
+            this.txtCreateEmployeeSalary = new System.Windows.Forms.TextBox();
+            this.txtCreateEmployeeTitle = new System.Windows.Forms.TextBox();
+            this.txtCreateEmployeeSupervisorID = new System.Windows.Forms.TextBox();
+            this.txtCreateEmployeeBranchID = new System.Windows.Forms.TextBox();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.label30 = new System.Windows.Forms.Label();
+            this.btnDeleteEmployee = new System.Windows.Forms.Button();
+            this.txtDeleteEmployeeID = new System.Windows.Forms.TextBox();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.branchGridView = new System.Windows.Forms.DataGridView();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.label31 = new System.Windows.Forms.Label();
+            this.btnCreateBranch = new System.Windows.Forms.Button();
+            this.txtCreateBranchLocation = new System.Windows.Forms.TextBox();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.label32 = new System.Windows.Forms.Label();
+            this.txtDelteteBranchID = new System.Windows.Forms.TextBox();
+            this.btnDeleteBranch = new System.Windows.Forms.Button();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.label33 = new System.Windows.Forms.Label();
+            this.label34 = new System.Windows.Forms.Label();
+            this.dtpLatebyDate = new System.Windows.Forms.DateTimePicker();
+            this.btnCreateCheckedoutBook = new System.Windows.Forms.Button();
+            this.txtCreateCheckedOutBookMemberID = new System.Windows.Forms.TextBox();
+            this.txtCreateCheckedOutBookID = new System.Windows.Forms.TextBox();
             this.tabControl.SuspendLayout();
             this.booksTab.SuspendLayout();
             this.searchContainer.SuspendLayout();
@@ -87,6 +150,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.employeeGridView)).BeginInit();
             this.checkedOutTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.checkedOutGridView)).BeginInit();
+            this.AddContainer.SuspendLayout();
+            this.gpDeleteBook.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            this.groupBox6.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.branchGridView)).BeginInit();
+            this.groupBox7.SuspendLayout();
+            this.groupBox8.SuspendLayout();
+            this.groupBox9.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl
@@ -97,6 +171,7 @@
             this.tabControl.Controls.Add(this.checkedOutTab);
             this.tabControl.Controls.Add(this.adminTab);
             this.tabControl.Controls.Add(this.checkoutTab);
+            this.tabControl.Controls.Add(this.tabPage1);
             this.tabControl.Location = new System.Drawing.Point(12, 41);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
@@ -105,6 +180,8 @@
             // 
             // booksTab
             // 
+            this.booksTab.Controls.Add(this.gpDeleteBook);
+            this.booksTab.Controls.Add(this.AddContainer);
             this.booksTab.Controls.Add(this.searchContainer);
             this.booksTab.Controls.Add(this.booksGridView);
             this.booksTab.Location = new System.Drawing.Point(4, 22);
@@ -264,6 +341,8 @@
             // 
             // membersTab
             // 
+            this.membersTab.Controls.Add(this.groupBox4);
+            this.membersTab.Controls.Add(this.groupBox3);
             this.membersTab.Controls.Add(this.groupBox1);
             this.membersTab.Controls.Add(this.membersGridView);
             this.membersTab.Location = new System.Drawing.Point(4, 22);
@@ -369,6 +448,8 @@
             // 
             // employeeTab
             // 
+            this.employeeTab.Controls.Add(this.groupBox6);
+            this.employeeTab.Controls.Add(this.groupBox5);
             this.employeeTab.Controls.Add(this.groupBox2);
             this.employeeTab.Controls.Add(this.employeeGridView);
             this.employeeTab.Location = new System.Drawing.Point(4, 22);
@@ -397,6 +478,22 @@
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Search";
+            // 
+            // empNameTextBox
+            // 
+            this.empNameTextBox.Location = new System.Drawing.Point(77, 42);
+            this.empNameTextBox.Name = "empNameTextBox";
+            this.empNameTextBox.Size = new System.Drawing.Size(146, 20);
+            this.empNameTextBox.TabIndex = 13;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(36, 42);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(35, 13);
+            this.label13.TabIndex = 12;
+            this.label13.Text = "Name";
             // 
             // employeeClear
             // 
@@ -476,6 +573,7 @@
             // 
             // checkedOutTab
             // 
+            this.checkedOutTab.Controls.Add(this.groupBox9);
             this.checkedOutTab.Controls.Add(this.checkedOutGridView);
             this.checkedOutTab.Location = new System.Drawing.Point(4, 22);
             this.checkedOutTab.Name = "checkedOutTab";
@@ -484,6 +582,14 @@
             this.checkedOutTab.TabIndex = 3;
             this.checkedOutTab.Text = "Checked Out";
             this.checkedOutTab.UseVisualStyleBackColor = true;
+            // 
+            // checkedOutGridView
+            // 
+            this.checkedOutGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.checkedOutGridView.Location = new System.Drawing.Point(13, 6);
+            this.checkedOutGridView.Name = "checkedOutGridView";
+            this.checkedOutGridView.Size = new System.Drawing.Size(512, 544);
+            this.checkedOutGridView.TabIndex = 0;
             // 
             // adminTab
             // 
@@ -514,29 +620,593 @@
             this.branchListBox.TabIndex = 2;
             this.branchListBox.SelectedIndexChanged += new System.EventHandler(this.branchListBox_SelectedIndexChanged);
             // 
-            // empNameTextBox
+            // AddContainer
             // 
-            this.empNameTextBox.Location = new System.Drawing.Point(77, 42);
-            this.empNameTextBox.Name = "empNameTextBox";
-            this.empNameTextBox.Size = new System.Drawing.Size(146, 20);
-            this.empNameTextBox.TabIndex = 13;
+            this.AddContainer.Controls.Add(this.btnAddBook);
+            this.AddContainer.Controls.Add(this.cbAddCopiesAvilable);
+            this.AddContainer.Controls.Add(this.txtAddCopies);
+            this.AddContainer.Controls.Add(this.txtAddRating);
+            this.AddContainer.Controls.Add(this.txtAddBranchID);
+            this.AddContainer.Controls.Add(this.txtAddISBN);
+            this.AddContainer.Controls.Add(this.txtAddAuthor);
+            this.AddContainer.Controls.Add(this.txtAddTitle);
+            this.AddContainer.Controls.Add(this.label20);
+            this.AddContainer.Controls.Add(this.label19);
+            this.AddContainer.Controls.Add(this.label18);
+            this.AddContainer.Controls.Add(this.label17);
+            this.AddContainer.Controls.Add(this.label16);
+            this.AddContainer.Controls.Add(this.label15);
+            this.AddContainer.Controls.Add(this.label14);
+            this.AddContainer.Location = new System.Drawing.Point(271, 218);
+            this.AddContainer.Name = "AddContainer";
+            this.AddContainer.Size = new System.Drawing.Size(228, 252);
+            this.AddContainer.TabIndex = 2;
+            this.AddContainer.TabStop = false;
+            this.AddContainer.Text = "Create";
             // 
-            // label13
+            // label14
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(36, 42);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(35, 13);
-            this.label13.TabIndex = 12;
-            this.label13.Text = "Name";
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(7, 19);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(27, 13);
+            this.label14.TabIndex = 0;
+            this.label14.Text = "Title";
             // 
-            // checkedOutGridView
+            // label15
             // 
-            this.checkedOutGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.checkedOutGridView.Location = new System.Drawing.Point(13, 6);
-            this.checkedOutGridView.Name = "checkedOutGridView";
-            this.checkedOutGridView.Size = new System.Drawing.Size(512, 544);
-            this.checkedOutGridView.TabIndex = 0;
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(7, 42);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(38, 13);
+            this.label15.TabIndex = 1;
+            this.label15.Text = "Author";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(7, 71);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(32, 13);
+            this.label16.TabIndex = 2;
+            this.label16.Text = "ISBN";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(7, 99);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(40, 13);
+            this.label17.TabIndex = 3;
+            this.label17.Text = "branch";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(7, 129);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(38, 13);
+            this.label18.TabIndex = 4;
+            this.label18.Text = "Rating";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(7, 164);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(39, 13);
+            this.label19.TabIndex = 5;
+            this.label19.Text = "Copies";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(10, 193);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(80, 13);
+            this.label20.TabIndex = 6;
+            this.label20.Text = "copies_avilable";
+            // 
+            // txtAddTitle
+            // 
+            this.txtAddTitle.Location = new System.Drawing.Point(86, 19);
+            this.txtAddTitle.Name = "txtAddTitle";
+            this.txtAddTitle.Size = new System.Drawing.Size(100, 20);
+            this.txtAddTitle.TabIndex = 7;
+            // 
+            // txtAddAuthor
+            // 
+            this.txtAddAuthor.Location = new System.Drawing.Point(86, 46);
+            this.txtAddAuthor.Name = "txtAddAuthor";
+            this.txtAddAuthor.Size = new System.Drawing.Size(100, 20);
+            this.txtAddAuthor.TabIndex = 8;
+            // 
+            // txtAddISBN
+            // 
+            this.txtAddISBN.Location = new System.Drawing.Point(86, 70);
+            this.txtAddISBN.Name = "txtAddISBN";
+            this.txtAddISBN.Size = new System.Drawing.Size(100, 20);
+            this.txtAddISBN.TabIndex = 9;
+            // 
+            // txtAddBranchID
+            // 
+            this.txtAddBranchID.Location = new System.Drawing.Point(86, 102);
+            this.txtAddBranchID.Name = "txtAddBranchID";
+            this.txtAddBranchID.Size = new System.Drawing.Size(100, 20);
+            this.txtAddBranchID.TabIndex = 10;
+            // 
+            // txtAddRating
+            // 
+            this.txtAddRating.Location = new System.Drawing.Point(86, 128);
+            this.txtAddRating.Name = "txtAddRating";
+            this.txtAddRating.Size = new System.Drawing.Size(100, 20);
+            this.txtAddRating.TabIndex = 11;
+            // 
+            // txtAddCopies
+            // 
+            this.txtAddCopies.Location = new System.Drawing.Point(86, 164);
+            this.txtAddCopies.Name = "txtAddCopies";
+            this.txtAddCopies.Size = new System.Drawing.Size(100, 20);
+            this.txtAddCopies.TabIndex = 12;
+            // 
+            // cbAddCopiesAvilable
+            // 
+            this.cbAddCopiesAvilable.AutoSize = true;
+            this.cbAddCopiesAvilable.Location = new System.Drawing.Point(97, 193);
+            this.cbAddCopiesAvilable.Name = "cbAddCopiesAvilable";
+            this.cbAddCopiesAvilable.Size = new System.Drawing.Size(15, 14);
+            this.cbAddCopiesAvilable.TabIndex = 13;
+            this.cbAddCopiesAvilable.UseVisualStyleBackColor = true;
+            // 
+            // btnAddBook
+            // 
+            this.btnAddBook.Location = new System.Drawing.Point(13, 220);
+            this.btnAddBook.Name = "btnAddBook";
+            this.btnAddBook.Size = new System.Drawing.Size(198, 23);
+            this.btnAddBook.TabIndex = 14;
+            this.btnAddBook.Text = "Create a Book";
+            this.btnAddBook.UseVisualStyleBackColor = true;
+            this.btnAddBook.Click += new System.EventHandler(this.btnAddBook_Click);
+            // 
+            // gpDeleteBook
+            // 
+            this.gpDeleteBook.Controls.Add(this.btnDeleteBook);
+            this.gpDeleteBook.Controls.Add(this.txtDeleteBookId);
+            this.gpDeleteBook.Controls.Add(this.label21);
+            this.gpDeleteBook.Location = new System.Drawing.Point(533, 218);
+            this.gpDeleteBook.Name = "gpDeleteBook";
+            this.gpDeleteBook.Size = new System.Drawing.Size(200, 115);
+            this.gpDeleteBook.TabIndex = 3;
+            this.gpDeleteBook.TabStop = false;
+            this.gpDeleteBook.Text = "Delete";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(20, 41);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(46, 13);
+            this.label21.TabIndex = 0;
+            this.label21.Text = "Book ID";
+            // 
+            // txtDeleteBookId
+            // 
+            this.txtDeleteBookId.Location = new System.Drawing.Point(82, 41);
+            this.txtDeleteBookId.Name = "txtDeleteBookId";
+            this.txtDeleteBookId.Size = new System.Drawing.Size(100, 20);
+            this.txtDeleteBookId.TabIndex = 1;
+            // 
+            // btnDeleteBook
+            // 
+            this.btnDeleteBook.Location = new System.Drawing.Point(23, 74);
+            this.btnDeleteBook.Name = "btnDeleteBook";
+            this.btnDeleteBook.Size = new System.Drawing.Size(159, 23);
+            this.btnDeleteBook.TabIndex = 2;
+            this.btnDeleteBook.Text = "Delte a Book";
+            this.btnDeleteBook.UseVisualStyleBackColor = true;
+            this.btnDeleteBook.Click += new System.EventHandler(this.btnDeleteBook_Click);
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.txtCreateMemberBranchID);
+            this.groupBox3.Controls.Add(this.txtCreateMemberAddress);
+            this.groupBox3.Controls.Add(this.txtCreateMemberName);
+            this.groupBox3.Controls.Add(this.btnCreateMember);
+            this.groupBox3.Controls.Add(this.label24);
+            this.groupBox3.Controls.Add(this.label23);
+            this.groupBox3.Controls.Add(this.label22);
+            this.groupBox3.Location = new System.Drawing.Point(290, 227);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(200, 136);
+            this.groupBox3.TabIndex = 4;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Create";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(7, 20);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(35, 13);
+            this.label22.TabIndex = 0;
+            this.label22.Text = "Name";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(7, 45);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(45, 13);
+            this.label23.TabIndex = 1;
+            this.label23.Text = "Address";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(7, 71);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(55, 13);
+            this.label24.TabIndex = 2;
+            this.label24.Text = "Branch ID";
+            // 
+            // btnCreateMember
+            // 
+            this.btnCreateMember.Location = new System.Drawing.Point(10, 96);
+            this.btnCreateMember.Name = "btnCreateMember";
+            this.btnCreateMember.Size = new System.Drawing.Size(184, 23);
+            this.btnCreateMember.TabIndex = 3;
+            this.btnCreateMember.Text = "Create a Member";
+            this.btnCreateMember.UseVisualStyleBackColor = true;
+            this.btnCreateMember.Click += new System.EventHandler(this.btnCreateMember_Click);
+            // 
+            // txtCreateMemberName
+            // 
+            this.txtCreateMemberName.Location = new System.Drawing.Point(83, 20);
+            this.txtCreateMemberName.Name = "txtCreateMemberName";
+            this.txtCreateMemberName.Size = new System.Drawing.Size(100, 20);
+            this.txtCreateMemberName.TabIndex = 4;
+            // 
+            // txtCreateMemberAddress
+            // 
+            this.txtCreateMemberAddress.Location = new System.Drawing.Point(83, 44);
+            this.txtCreateMemberAddress.Name = "txtCreateMemberAddress";
+            this.txtCreateMemberAddress.Size = new System.Drawing.Size(100, 20);
+            this.txtCreateMemberAddress.TabIndex = 5;
+            // 
+            // txtCreateMemberBranchID
+            // 
+            this.txtCreateMemberBranchID.Location = new System.Drawing.Point(83, 70);
+            this.txtCreateMemberBranchID.Name = "txtCreateMemberBranchID";
+            this.txtCreateMemberBranchID.Size = new System.Drawing.Size(100, 20);
+            this.txtCreateMemberBranchID.TabIndex = 6;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.btnDeleteMember);
+            this.groupBox4.Controls.Add(this.txtDeleteMemberID);
+            this.groupBox4.Controls.Add(this.label25);
+            this.groupBox4.Location = new System.Drawing.Point(515, 227);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(200, 100);
+            this.groupBox4.TabIndex = 5;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Delete";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(17, 26);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(59, 13);
+            this.label25.TabIndex = 0;
+            this.label25.Text = "Member ID";
+            // 
+            // txtDeleteMemberID
+            // 
+            this.txtDeleteMemberID.Location = new System.Drawing.Point(82, 23);
+            this.txtDeleteMemberID.Name = "txtDeleteMemberID";
+            this.txtDeleteMemberID.Size = new System.Drawing.Size(100, 20);
+            this.txtDeleteMemberID.TabIndex = 1;
+            // 
+            // btnDeleteMember
+            // 
+            this.btnDeleteMember.Location = new System.Drawing.Point(33, 60);
+            this.btnDeleteMember.Name = "btnDeleteMember";
+            this.btnDeleteMember.Size = new System.Drawing.Size(139, 23);
+            this.btnDeleteMember.TabIndex = 2;
+            this.btnDeleteMember.Text = "Delete";
+            this.btnDeleteMember.UseVisualStyleBackColor = true;
+            this.btnDeleteMember.Click += new System.EventHandler(this.btnDeleteMember_Click);
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.txtCreateEmployeeBranchID);
+            this.groupBox5.Controls.Add(this.txtCreateEmployeeSupervisorID);
+            this.groupBox5.Controls.Add(this.txtCreateEmployeeTitle);
+            this.groupBox5.Controls.Add(this.txtCreateEmployeeSalary);
+            this.groupBox5.Controls.Add(this.btnCreateEmployee);
+            this.groupBox5.Controls.Add(this.label29);
+            this.groupBox5.Controls.Add(this.label28);
+            this.groupBox5.Controls.Add(this.label27);
+            this.groupBox5.Controls.Add(this.label26);
+            this.groupBox5.Location = new System.Drawing.Point(287, 227);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(216, 162);
+            this.groupBox5.TabIndex = 6;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Create";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(19, 20);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(36, 13);
+            this.label26.TabIndex = 0;
+            this.label26.Text = "Salary";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(19, 48);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(27, 13);
+            this.label27.TabIndex = 1;
+            this.label27.Text = "Title";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(19, 74);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(68, 13);
+            this.label28.TabIndex = 2;
+            this.label28.Text = "SupervisorID";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(22, 99);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(52, 13);
+            this.label29.TabIndex = 3;
+            this.label29.Text = "BranchID";
+            // 
+            // btnCreateEmployee
+            // 
+            this.btnCreateEmployee.Location = new System.Drawing.Point(22, 128);
+            this.btnCreateEmployee.Name = "btnCreateEmployee";
+            this.btnCreateEmployee.Size = new System.Drawing.Size(177, 23);
+            this.btnCreateEmployee.TabIndex = 4;
+            this.btnCreateEmployee.Text = "Create a Employee";
+            this.btnCreateEmployee.UseVisualStyleBackColor = true;
+            this.btnCreateEmployee.Click += new System.EventHandler(this.btnCreateEmployee_Click);
+            // 
+            // txtCreateEmployeeSalary
+            // 
+            this.txtCreateEmployeeSalary.Location = new System.Drawing.Point(108, 20);
+            this.txtCreateEmployeeSalary.Name = "txtCreateEmployeeSalary";
+            this.txtCreateEmployeeSalary.Size = new System.Drawing.Size(100, 20);
+            this.txtCreateEmployeeSalary.TabIndex = 5;
+            // 
+            // txtCreateEmployeeTitle
+            // 
+            this.txtCreateEmployeeTitle.Location = new System.Drawing.Point(108, 48);
+            this.txtCreateEmployeeTitle.Name = "txtCreateEmployeeTitle";
+            this.txtCreateEmployeeTitle.Size = new System.Drawing.Size(100, 20);
+            this.txtCreateEmployeeTitle.TabIndex = 6;
+            // 
+            // txtCreateEmployeeSupervisorID
+            // 
+            this.txtCreateEmployeeSupervisorID.Location = new System.Drawing.Point(108, 75);
+            this.txtCreateEmployeeSupervisorID.Name = "txtCreateEmployeeSupervisorID";
+            this.txtCreateEmployeeSupervisorID.Size = new System.Drawing.Size(100, 20);
+            this.txtCreateEmployeeSupervisorID.TabIndex = 7;
+            // 
+            // txtCreateEmployeeBranchID
+            // 
+            this.txtCreateEmployeeBranchID.Location = new System.Drawing.Point(108, 102);
+            this.txtCreateEmployeeBranchID.Name = "txtCreateEmployeeBranchID";
+            this.txtCreateEmployeeBranchID.Size = new System.Drawing.Size(100, 20);
+            this.txtCreateEmployeeBranchID.TabIndex = 8;
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.txtDeleteEmployeeID);
+            this.groupBox6.Controls.Add(this.btnDeleteEmployee);
+            this.groupBox6.Controls.Add(this.label30);
+            this.groupBox6.Location = new System.Drawing.Point(519, 227);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(200, 100);
+            this.groupBox6.TabIndex = 7;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Delete";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(17, 26);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(64, 13);
+            this.label30.TabIndex = 0;
+            this.label30.Text = "EmployeeID";
+            // 
+            // btnDeleteEmployee
+            // 
+            this.btnDeleteEmployee.Location = new System.Drawing.Point(20, 59);
+            this.btnDeleteEmployee.Name = "btnDeleteEmployee";
+            this.btnDeleteEmployee.Size = new System.Drawing.Size(168, 23);
+            this.btnDeleteEmployee.TabIndex = 1;
+            this.btnDeleteEmployee.Text = "Delete";
+            this.btnDeleteEmployee.UseVisualStyleBackColor = true;
+            this.btnDeleteEmployee.Click += new System.EventHandler(this.btnDeleteEmployee_Click);
+            // 
+            // txtDeleteEmployeeID
+            // 
+            this.txtDeleteEmployeeID.Location = new System.Drawing.Point(88, 26);
+            this.txtDeleteEmployeeID.Name = "txtDeleteEmployeeID";
+            this.txtDeleteEmployeeID.Size = new System.Drawing.Size(100, 20);
+            this.txtDeleteEmployeeID.TabIndex = 2;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.groupBox8);
+            this.tabPage1.Controls.Add(this.groupBox7);
+            this.tabPage1.Controls.Add(this.branchGridView);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Size = new System.Drawing.Size(893, 583);
+            this.tabPage1.TabIndex = 6;
+            this.tabPage1.Text = "Branch";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // branchGridView
+            // 
+            this.branchGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.branchGridView.Location = new System.Drawing.Point(27, 16);
+            this.branchGridView.Name = "branchGridView";
+            this.branchGridView.Size = new System.Drawing.Size(829, 249);
+            this.branchGridView.TabIndex = 0;
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.txtCreateBranchLocation);
+            this.groupBox7.Controls.Add(this.btnCreateBranch);
+            this.groupBox7.Controls.Add(this.label31);
+            this.groupBox7.Location = new System.Drawing.Point(27, 290);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(200, 106);
+            this.groupBox7.TabIndex = 1;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Create";
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(17, 32);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(48, 13);
+            this.label31.TabIndex = 0;
+            this.label31.Text = "Location";
+            // 
+            // btnCreateBranch
+            // 
+            this.btnCreateBranch.Location = new System.Drawing.Point(20, 68);
+            this.btnCreateBranch.Name = "btnCreateBranch";
+            this.btnCreateBranch.Size = new System.Drawing.Size(161, 23);
+            this.btnCreateBranch.TabIndex = 1;
+            this.btnCreateBranch.Text = "Create a Branch";
+            this.btnCreateBranch.UseVisualStyleBackColor = true;
+            this.btnCreateBranch.Click += new System.EventHandler(this.btnCreateBranch_Click);
+            // 
+            // txtCreateBranchLocation
+            // 
+            this.txtCreateBranchLocation.Location = new System.Drawing.Point(84, 32);
+            this.txtCreateBranchLocation.Name = "txtCreateBranchLocation";
+            this.txtCreateBranchLocation.Size = new System.Drawing.Size(100, 20);
+            this.txtCreateBranchLocation.TabIndex = 2;
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.Controls.Add(this.btnDeleteBranch);
+            this.groupBox8.Controls.Add(this.txtDelteteBranchID);
+            this.groupBox8.Controls.Add(this.label32);
+            this.groupBox8.Location = new System.Drawing.Point(253, 290);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(200, 100);
+            this.groupBox8.TabIndex = 2;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "Delete";
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(21, 32);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(55, 13);
+            this.label32.TabIndex = 0;
+            this.label32.Text = "Branch ID";
+            // 
+            // txtDelteteBranchID
+            // 
+            this.txtDelteteBranchID.Location = new System.Drawing.Point(82, 29);
+            this.txtDelteteBranchID.Name = "txtDelteteBranchID";
+            this.txtDelteteBranchID.Size = new System.Drawing.Size(100, 20);
+            this.txtDelteteBranchID.TabIndex = 1;
+            // 
+            // btnDeleteBranch
+            // 
+            this.btnDeleteBranch.Location = new System.Drawing.Point(24, 68);
+            this.btnDeleteBranch.Name = "btnDeleteBranch";
+            this.btnDeleteBranch.Size = new System.Drawing.Size(158, 23);
+            this.btnDeleteBranch.TabIndex = 2;
+            this.btnDeleteBranch.Text = "Delete a Branch";
+            this.btnDeleteBranch.UseVisualStyleBackColor = true;
+            this.btnDeleteBranch.Click += new System.EventHandler(this.btnDeleteBranch_Click);
+            // 
+            // groupBox9
+            // 
+            this.groupBox9.Controls.Add(this.txtCreateCheckedOutBookID);
+            this.groupBox9.Controls.Add(this.txtCreateCheckedOutBookMemberID);
+            this.groupBox9.Controls.Add(this.btnCreateCheckedoutBook);
+            this.groupBox9.Controls.Add(this.dtpLatebyDate);
+            this.groupBox9.Controls.Add(this.label34);
+            this.groupBox9.Controls.Add(this.label33);
+            this.groupBox9.Location = new System.Drawing.Point(559, 18);
+            this.groupBox9.Name = "groupBox9";
+            this.groupBox9.Size = new System.Drawing.Size(257, 165);
+            this.groupBox9.TabIndex = 1;
+            this.groupBox9.TabStop = false;
+            this.groupBox9.Text = "Create";
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(9, 30);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(59, 13);
+            this.label33.TabIndex = 0;
+            this.label33.Text = "Member ID";
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(9, 60);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(46, 13);
+            this.label34.TabIndex = 1;
+            this.label34.Text = "Book ID";
+            // 
+            // dtpLatebyDate
+            // 
+            this.dtpLatebyDate.Location = new System.Drawing.Point(9, 95);
+            this.dtpLatebyDate.Name = "dtpLatebyDate";
+            this.dtpLatebyDate.Size = new System.Drawing.Size(210, 20);
+            this.dtpLatebyDate.TabIndex = 2;
+            // 
+            // btnCreateCheckedoutBook
+            // 
+            this.btnCreateCheckedoutBook.Location = new System.Drawing.Point(12, 134);
+            this.btnCreateCheckedoutBook.Name = "btnCreateCheckedoutBook";
+            this.btnCreateCheckedoutBook.Size = new System.Drawing.Size(227, 23);
+            this.btnCreateCheckedoutBook.TabIndex = 3;
+            this.btnCreateCheckedoutBook.Text = "Create a Checked Out Book";
+            this.btnCreateCheckedoutBook.UseVisualStyleBackColor = true;
+            this.btnCreateCheckedoutBook.Click += new System.EventHandler(this.btnCreateCheckedoutBook_Click);
+            // 
+            // txtCreateCheckedOutBookMemberID
+            // 
+            this.txtCreateCheckedOutBookMemberID.Location = new System.Drawing.Point(104, 30);
+            this.txtCreateCheckedOutBookMemberID.Name = "txtCreateCheckedOutBookMemberID";
+            this.txtCreateCheckedOutBookMemberID.Size = new System.Drawing.Size(100, 20);
+            this.txtCreateCheckedOutBookMemberID.TabIndex = 4;
+            // 
+            // txtCreateCheckedOutBookID
+            // 
+            this.txtCreateCheckedOutBookID.Location = new System.Drawing.Point(104, 60);
+            this.txtCreateCheckedOutBookID.Name = "txtCreateCheckedOutBookID";
+            this.txtCreateCheckedOutBookID.Size = new System.Drawing.Size(100, 20);
+            this.txtCreateCheckedOutBookID.TabIndex = 5;
             // 
             // Form1
             // 
@@ -562,6 +1232,26 @@
             ((System.ComponentModel.ISupportInitialize)(this.employeeGridView)).EndInit();
             this.checkedOutTab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.checkedOutGridView)).EndInit();
+            this.AddContainer.ResumeLayout(false);
+            this.AddContainer.PerformLayout();
+            this.gpDeleteBook.ResumeLayout(false);
+            this.gpDeleteBook.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
+            this.tabPage1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.branchGridView)).EndInit();
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox8.PerformLayout();
+            this.groupBox9.ResumeLayout(false);
+            this.groupBox9.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -614,6 +1304,69 @@
         private System.Windows.Forms.TextBox empNameTextBox;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.DataGridView checkedOutGridView;
+        private System.Windows.Forms.GroupBox AddContainer;
+        private System.Windows.Forms.Button btnAddBook;
+        private System.Windows.Forms.CheckBox cbAddCopiesAvilable;
+        private System.Windows.Forms.TextBox txtAddCopies;
+        private System.Windows.Forms.TextBox txtAddRating;
+        private System.Windows.Forms.TextBox txtAddBranchID;
+        private System.Windows.Forms.TextBox txtAddISBN;
+        private System.Windows.Forms.TextBox txtAddAuthor;
+        private System.Windows.Forms.TextBox txtAddTitle;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.GroupBox gpDeleteBook;
+        private System.Windows.Forms.Button btnDeleteBook;
+        private System.Windows.Forms.TextBox txtDeleteBookId;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Button btnCreateMember;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.TextBox txtCreateMemberBranchID;
+        private System.Windows.Forms.TextBox txtCreateMemberAddress;
+        private System.Windows.Forms.TextBox txtCreateMemberName;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Button btnDeleteMember;
+        private System.Windows.Forms.TextBox txtDeleteMemberID;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.TextBox txtCreateEmployeeBranchID;
+        private System.Windows.Forms.TextBox txtCreateEmployeeSupervisorID;
+        private System.Windows.Forms.TextBox txtCreateEmployeeTitle;
+        private System.Windows.Forms.TextBox txtCreateEmployeeSalary;
+        private System.Windows.Forms.Button btnCreateEmployee;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.TextBox txtDeleteEmployeeID;
+        private System.Windows.Forms.Button btnDeleteEmployee;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.DataGridView branchGridView;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.TextBox txtCreateBranchLocation;
+        private System.Windows.Forms.Button btnCreateBranch;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.Button btnDeleteBranch;
+        private System.Windows.Forms.TextBox txtDelteteBranchID;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.GroupBox groupBox9;
+        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.TextBox txtCreateCheckedOutBookID;
+        private System.Windows.Forms.TextBox txtCreateCheckedOutBookMemberID;
+        private System.Windows.Forms.Button btnCreateCheckedoutBook;
+        private System.Windows.Forms.DateTimePicker dtpLatebyDate;
     }
 }
 
