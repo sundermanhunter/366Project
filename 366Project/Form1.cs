@@ -397,6 +397,33 @@ namespace _366Project
             populatePage();
         }
 
+
+
+        // Function to check if a branch with the specified branchID exists
+        private bool BranchExists(int branchID)
+        {
+            using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
+            {
+                connection.Open();
+
+                string query = "SELECT COUNT(*) FROM branch WHERE branch_id = @branch_id";
+                using (NpgsqlCommand cmd = new NpgsqlCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@branch_id", branchID);
+
+                    int count = Convert.ToInt32(cmd.ExecuteScalar());
+
+                    connection.Close();
+
+                    return count > 0;
+                }
+
+               
+            }
+        }
+
+        //Add a Book
+
         private void btnAddBook_Click(object sender, EventArgs e)
         {
             string title ="";
@@ -422,15 +449,26 @@ namespace _366Project
             }
             if (int.TryParse(txtAddBranchID.Text, out branchID) == true)
             {
-                isbn = Convert.ToInt32(txtAddBranchID.Text);
+                branchID = Convert.ToInt32(txtAddBranchID.Text);
+
+                if (!BranchExists(branchID))
+                {
+                    MessageBox.Show($"Branch with ID {branchID} does not exist.");
+                    return; // Exit the method if validation fails
+                }
+            }
+            else
+            {
+                MessageBox.Show("Enter a valid branch ID");
+                return; // Exit the method if validation fails
             }
             if (int.TryParse(txtAddRating.Text, out rating) == true)
             {
-                isbn = Convert.ToInt32(txtAddRating.Text);
+                rating = Convert.ToInt32(txtAddRating.Text);
             }
             if (int.TryParse(txtAddCopies.Text, out copies) == true)
             {
-                isbn = Convert.ToInt32(txtAddCopies.Text);
+                copies = Convert.ToInt32(txtAddCopies.Text);
             }
             if (cbAddCopiesAvilable.Checked == true)
             {
@@ -471,7 +509,8 @@ namespace _366Project
             }
 
         }
-
+        
+        //Delete a Book
         private void btnDeleteBook_Click(object sender, EventArgs e)
         {
             int bookId;
@@ -514,6 +553,121 @@ namespace _366Project
                 MessageBox.Show("PostgreSQL Connection Error: " + ex.Message);
             }
 
+        }
+
+        //Create a Member
+        private void btnCreateMember_Click(object sender, EventArgs e)
+        {
+            string name ="";
+            string address ="";
+            int branchID;
+
+
+            //validation
+            if (!string.IsNullOrWhiteSpace(txtCreateMemberName.Text))
+            {
+                name = txtCreateMemberName.Text;
+            }
+            else
+                MessageBox.Show("Enter valid name");
+
+            if (!string.IsNullOrWhiteSpace(txtCreateMemberAddress.Text))
+            {
+                address = txtCreateMemberAddress.Text;
+            }
+            if (int.TryParse(txtCreateMemberBranchID.Text, out branchID) == true)
+            {
+                branchID = Convert.ToInt32(txtCreateMemberBranchID.Text);
+
+                if (!BranchExists(branchID))
+                {
+                    MessageBox.Show($"Branch with ID {branchID} does not exist.");
+                    return; // Exit the method if validation fails
+                }
+            }
+            else
+            {
+                MessageBox.Show("Enter a valid branch ID");
+                return; // Exit the method if validation fails
+            }
+
+
+
+            string createMemberQuery = "INSERT INTO members (name, address, member_since, branch_id) " +
+                                  "VALUES (@name, @address, @member_since, @branch_id)";
+
+            try
+            {
+                using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    using (NpgsqlCommand cmd = new NpgsqlCommand(createMemberQuery, connection))
+                    {
+
+                        cmd.Parameters.AddWithValue("@name", $"{name}");
+                        cmd.Parameters.AddWithValue("@address", $"{address}");
+                        cmd.Parameters.AddWithValue("@member_since", DateTime.Now);
+                        cmd.Parameters.AddWithValue("@branch_id", branchID);
+
+
+                        // Execute the query
+                        cmd.ExecuteNonQuery();
+                        connection.Close();
+                        populatePage();
+                    }
+                }
+            }
+            catch (NpgsqlException ex)
+            {
+                MessageBox.Show("PostgreSQL Connection Error: " + ex.Message);
+            }
+        }
+
+        //Delete a Member
+        private void btnDeleteMember_Click(object sender, EventArgs e)
+        {
+            int memberID;
+
+            //validation
+            if (int.TryParse(txtDeleteMemberID.Text, out memberID) == true)
+            {
+                memberID = Convert.ToInt32(txtDeleteMemberID.Text);
+            }
+            else
+            {
+                MessageBox.Show("Enter valid number");
+            }
+
+            
+            string deleteMemberQuery = "Delete from members Where member_id = @member_id";
+
+            try
+            {
+                using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
+                {
+                    connection.Open();
+
+
+
+                    using (NpgsqlCommand cmd = new NpgsqlCommand(deleteMemberQuery, connection))
+                    {
+
+                        cmd.Parameters.AddWithValue("@member_id", memberID);
+
+
+                        // Execute the query
+                        cmd.ExecuteNonQuery();
+                        connection.Close();
+
+                        populatePage();
+                    }
+                }
+            }
+            catch (NpgsqlException ex)
+            {
+                MessageBox.Show("PostgreSQL Connection Error: " + ex.Message);
+            }
         }
     }
 }

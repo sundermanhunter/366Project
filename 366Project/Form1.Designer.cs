@@ -95,6 +95,18 @@
             this.label21 = new System.Windows.Forms.Label();
             this.txtDeleteBookId = new System.Windows.Forms.TextBox();
             this.btnDeleteBook = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.btnCreateMember = new System.Windows.Forms.Button();
+            this.txtCreateMemberName = new System.Windows.Forms.TextBox();
+            this.txtCreateMemberAddress = new System.Windows.Forms.TextBox();
+            this.txtCreateMemberBranchID = new System.Windows.Forms.TextBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.txtDeleteMemberID = new System.Windows.Forms.TextBox();
+            this.btnDeleteMember = new System.Windows.Forms.Button();
             this.tabControl.SuspendLayout();
             this.booksTab.SuspendLayout();
             this.searchContainer.SuspendLayout();
@@ -109,6 +121,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.checkedOutGridView)).BeginInit();
             this.AddContainer.SuspendLayout();
             this.gpDeleteBook.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl
@@ -288,6 +302,8 @@
             // 
             // membersTab
             // 
+            this.membersTab.Controls.Add(this.groupBox4);
+            this.membersTab.Controls.Add(this.groupBox3);
             this.membersTab.Controls.Add(this.groupBox1);
             this.membersTab.Controls.Add(this.membersGridView);
             this.membersTab.Location = new System.Drawing.Point(4, 22);
@@ -584,7 +600,7 @@
             this.AddContainer.Size = new System.Drawing.Size(228, 252);
             this.AddContainer.TabIndex = 2;
             this.AddContainer.TabStop = false;
-            this.AddContainer.Text = "Add";
+            this.AddContainer.Text = "Create";
             // 
             // label14
             // 
@@ -706,7 +722,7 @@
             this.btnAddBook.Name = "btnAddBook";
             this.btnAddBook.Size = new System.Drawing.Size(198, 23);
             this.btnAddBook.TabIndex = 14;
-            this.btnAddBook.Text = "Add a Book";
+            this.btnAddBook.Text = "Create a Book";
             this.btnAddBook.UseVisualStyleBackColor = true;
             this.btnAddBook.Click += new System.EventHandler(this.btnAddBook_Click);
             // 
@@ -748,6 +764,118 @@
             this.btnDeleteBook.UseVisualStyleBackColor = true;
             this.btnDeleteBook.Click += new System.EventHandler(this.btnDeleteBook_Click);
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.txtCreateMemberBranchID);
+            this.groupBox3.Controls.Add(this.txtCreateMemberAddress);
+            this.groupBox3.Controls.Add(this.txtCreateMemberName);
+            this.groupBox3.Controls.Add(this.btnCreateMember);
+            this.groupBox3.Controls.Add(this.label24);
+            this.groupBox3.Controls.Add(this.label23);
+            this.groupBox3.Controls.Add(this.label22);
+            this.groupBox3.Location = new System.Drawing.Point(290, 227);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(200, 136);
+            this.groupBox3.TabIndex = 4;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Create";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(7, 20);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(35, 13);
+            this.label22.TabIndex = 0;
+            this.label22.Text = "Name";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(7, 45);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(45, 13);
+            this.label23.TabIndex = 1;
+            this.label23.Text = "Address";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(7, 71);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(55, 13);
+            this.label24.TabIndex = 2;
+            this.label24.Text = "Branch ID";
+            // 
+            // btnCreateMember
+            // 
+            this.btnCreateMember.Location = new System.Drawing.Point(10, 96);
+            this.btnCreateMember.Name = "btnCreateMember";
+            this.btnCreateMember.Size = new System.Drawing.Size(184, 23);
+            this.btnCreateMember.TabIndex = 3;
+            this.btnCreateMember.Text = "Create a Member";
+            this.btnCreateMember.UseVisualStyleBackColor = true;
+            this.btnCreateMember.Click += new System.EventHandler(this.btnCreateMember_Click);
+            // 
+            // txtCreateMemberName
+            // 
+            this.txtCreateMemberName.Location = new System.Drawing.Point(83, 20);
+            this.txtCreateMemberName.Name = "txtCreateMemberName";
+            this.txtCreateMemberName.Size = new System.Drawing.Size(100, 20);
+            this.txtCreateMemberName.TabIndex = 4;
+            // 
+            // txtCreateMemberAddress
+            // 
+            this.txtCreateMemberAddress.Location = new System.Drawing.Point(83, 44);
+            this.txtCreateMemberAddress.Name = "txtCreateMemberAddress";
+            this.txtCreateMemberAddress.Size = new System.Drawing.Size(100, 20);
+            this.txtCreateMemberAddress.TabIndex = 5;
+            // 
+            // txtCreateMemberBranchID
+            // 
+            this.txtCreateMemberBranchID.Location = new System.Drawing.Point(83, 70);
+            this.txtCreateMemberBranchID.Name = "txtCreateMemberBranchID";
+            this.txtCreateMemberBranchID.Size = new System.Drawing.Size(100, 20);
+            this.txtCreateMemberBranchID.TabIndex = 6;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.btnDeleteMember);
+            this.groupBox4.Controls.Add(this.txtDeleteMemberID);
+            this.groupBox4.Controls.Add(this.label25);
+            this.groupBox4.Location = new System.Drawing.Point(515, 227);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(200, 100);
+            this.groupBox4.TabIndex = 5;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Delete";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(17, 26);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(59, 13);
+            this.label25.TabIndex = 0;
+            this.label25.Text = "Member ID";
+            // 
+            // txtDeleteMemberID
+            // 
+            this.txtDeleteMemberID.Location = new System.Drawing.Point(82, 23);
+            this.txtDeleteMemberID.Name = "txtDeleteMemberID";
+            this.txtDeleteMemberID.Size = new System.Drawing.Size(100, 20);
+            this.txtDeleteMemberID.TabIndex = 1;
+            // 
+            // btnDeleteMember
+            // 
+            this.btnDeleteMember.Location = new System.Drawing.Point(33, 60);
+            this.btnDeleteMember.Name = "btnDeleteMember";
+            this.btnDeleteMember.Size = new System.Drawing.Size(139, 23);
+            this.btnDeleteMember.TabIndex = 2;
+            this.btnDeleteMember.Text = "Delete";
+            this.btnDeleteMember.UseVisualStyleBackColor = true;
+            this.btnDeleteMember.Click += new System.EventHandler(this.btnDeleteMember_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -776,6 +904,10 @@
             this.AddContainer.PerformLayout();
             this.gpDeleteBook.ResumeLayout(false);
             this.gpDeleteBook.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -848,6 +980,18 @@
         private System.Windows.Forms.Button btnDeleteBook;
         private System.Windows.Forms.TextBox txtDeleteBookId;
         private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Button btnCreateMember;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.TextBox txtCreateMemberBranchID;
+        private System.Windows.Forms.TextBox txtCreateMemberAddress;
+        private System.Windows.Forms.TextBox txtCreateMemberName;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Button btnDeleteMember;
+        private System.Windows.Forms.TextBox txtDeleteMemberID;
+        private System.Windows.Forms.Label label25;
     }
 }
 
