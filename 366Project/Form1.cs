@@ -12,6 +12,7 @@ using System.Configuration;
 using Npgsql;
 using System.Xml.Linq;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TreeView;
+using System.Diagnostics.Eventing.Reader;
 
 namespace _366Project
 {
@@ -443,6 +444,52 @@ namespace _366Project
                 using (NpgsqlCommand cmd = new NpgsqlCommand(query, connection))
                 {
                     cmd.Parameters.AddWithValue("@supervisor_id", supervisorID);
+
+                    int count = Convert.ToInt32(cmd.ExecuteScalar());
+
+                    connection.Close();
+
+                    return count > 0;
+                }
+
+
+            }
+        }
+
+        //Function to check if a member with the specified member_ID exists
+        private bool MemberExists(int memberID)
+        {
+            using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
+            {
+                connection.Open();
+
+                string query = "SELECT COUNT(*) FROM members WHERE member_id = @member_id";
+                using (NpgsqlCommand cmd = new NpgsqlCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@member_id", memberID);
+
+                    int count = Convert.ToInt32(cmd.ExecuteScalar());
+
+                    connection.Close();
+
+                    return count > 0;
+                }
+
+
+            }
+        }
+
+        //Function to check if a book with the specified book_ID exists
+        private bool BookExists(int bookID)
+        {
+            using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
+            {
+                connection.Open();
+
+                string query = "SELECT COUNT(*) FROM books WHERE book_id = @book_id";
+                using (NpgsqlCommand cmd = new NpgsqlCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@book_id", bookID);
 
                     int count = Convert.ToInt32(cmd.ExecuteScalar());
 
@@ -926,6 +973,81 @@ namespace _366Project
                         cmd.ExecuteNonQuery();
                         connection.Close();
 
+                        populatePage();
+                    }
+                }
+            }
+            catch (NpgsqlException ex)
+            {
+                MessageBox.Show("PostgreSQL Connection Error: " + ex.Message);
+            }
+        }
+
+        private void btnCreateCheckedoutBook_Click(object sender, EventArgs e)
+        {
+            int memberID;
+            int bookID;
+            DateTime lateReturnDate;
+
+
+            //validation
+
+            if (int.TryParse(txtCreateCheckedOutBookMemberID.Text, out memberID) == true)
+            {
+                memberID = Convert.ToInt32(txtCreateCheckedOutBookMemberID.Text);
+
+                if (!MemberExists(memberID))
+                {
+                    MessageBox.Show($"Member with ID {memberID} does not exist.");
+                    return; // Exit the method if validation fails
+                }
+            }
+            else
+            {
+                MessageBox.Show("Enter a valid member ID");
+                return; // Exit the method if validation fails
+            }
+
+            if (int.TryParse(txtCreateCheckedOutBookID.Text, out bookID) == true)
+            {
+                bookID = Convert.ToInt32(txtCreateCheckedOutBookID.Text);
+
+                if (!BookExists(bookID))
+                {
+                    MessageBox.Show($"Book with ID {bookID} does not exist.");
+                    return; // Exit the method if validation fails
+                }
+            }
+            else
+            {
+                MessageBox.Show("Enter a valid book ID");
+                return; // Exit the method if validation fails
+            }
+
+            lateReturnDate = dtpLatebyDate.Value;
+
+
+            string createMemberQuery = "INSERT INTO checkedOutBooks (member_id, book_id, late_by_date) " +
+                                  "VALUES (@member_id, @book_id, @late_by_date)";
+
+            try
+            {
+                using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    using (NpgsqlCommand cmd = new NpgsqlCommand(createMemberQuery, connection))
+                    {
+
+                        cmd.Parameters.AddWithValue("@member_id", memberID);
+                        cmd.Parameters.AddWithValue("@book_id", bookID);
+                        cmd.Parameters.AddWithValue("@late_by_date", lateReturnDate);
+                        
+
+
+                        // Execute the query
+                        cmd.ExecuteNonQuery();
+                        connection.Close();
                         populatePage();
                     }
                 }
