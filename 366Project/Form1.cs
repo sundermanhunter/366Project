@@ -13,19 +13,21 @@ using Npgsql;
 using System.Xml.Linq;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TreeView;
 using System.Diagnostics.Eventing.Reader;
+using NpgsqlTypes;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace _366Project
 {
     public partial class Form1 : Form
     {
-
+        private List<int> selectedBookIds = new List<int>();
         private string connectionString;
         private int selectedBranch = 1;
 
         public Form1()
         {
             InitializeComponent();
-            connectionString = "Server=localhost;Port=5432;User Id=postgres;Password=0655;Database=Library;"; ;
+            connectionString = "Host=localhost;Username=postgres;Password=password;Persist Security Info=True;Database=project366"; ;
 
 
 
@@ -104,7 +106,7 @@ namespace _366Project
                         " b.title AS book_title," +
                         " b.ISBN AS book_ISBN," +
                         " cob.late_by_date," +
-                        " m.branch_id" + 
+                        " m.branch_id" +
                         " FROM" +
                         " members m " +
                         "INNER JOIN " +
@@ -135,7 +137,7 @@ namespace _366Project
                 using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
                 {
                     connection.Open();
-                    selectedBranch = branchListBox.SelectedIndex+1;
+                    selectedBranch = branchListBox.SelectedIndex + 1;
 
                     //books gridview population
                     string sqlQuery = "SELECT * FROM books WHERE branch_id=" + selectedBranch.ToString();
@@ -171,16 +173,14 @@ namespace _366Project
 
                     //checked out books
                     sqlQuery = "SELECT" +
-                        " m.name AS member_name," +
-                        " b.title AS book_title," +
-                        " b.ISBN AS book_ISBN," +
                         " cob.late_by_date," +
+                        " cob.book_id," +
+                        " cob.member_id," +
                         " m.branch_id" +
                         " FROM" +
                         " members m " +
                         "INNER JOIN " +
-                        "checkedOutBooks cob ON m.member_id = cob.member_id" +
-                        " INNER JOIN books b ON cob.book_id = b.book_id" +
+                        "checkedoutbooks cob ON cob.member_id = m.member_id" +
                         " WHERE m.branch_id = " + selectedBranch;
                     using (NpgsqlDataAdapter adapter = new NpgsqlDataAdapter(sqlQuery, connection))
                     {
@@ -189,6 +189,32 @@ namespace _366Project
                         checkedOutGridView.DataSource = dt;
                     }
 
+                    //check out populate
+                    sqlQuery = "SELECT book_id, title, copies, copies_avilable FROM books WHERE branch_id = " + selectedBranch + " AND copies_avilable = true";
+                    using (NpgsqlDataAdapter adapter = new NpgsqlDataAdapter(sqlQuery, connection))
+                    {
+                        DataTable dt = new DataTable();
+                        adapter.Fill(dt);
+                        checkOutGridView.DataSource = dt;
+                    }
+
+                    //check out cart populate
+                    int[] selectedBookIdsArray = selectedBookIds.ToArray();
+                    sqlQuery = "SELECT book_id, title FROM books WHERE book_id = ANY(@SelectedBookIds)";
+                    using (NpgsqlDataAdapter adapter = new NpgsqlDataAdapter(sqlQuery, connection))
+                    {
+                        // Assuming connection is already open
+
+                        // Create a parameter for the list of selected book IDs
+                        NpgsqlParameter parameter = new NpgsqlParameter("@SelectedBookIds", NpgsqlDbType.Array | NpgsqlDbType.Integer);
+                        parameter.Value = selectedBookIdsArray;
+
+                        // Add the parameter to the adapter
+                        adapter.SelectCommand.Parameters.Add(parameter);
+                        DataTable dt = new DataTable();
+                        adapter.Fill(dt);
+                        cartGridView.DataSource = dt;
+                    }
                 }
 
             }
@@ -204,7 +230,7 @@ namespace _366Project
             int id, isbn, maxRating, minRating;
             string title = bookTitleSearchBox.Text;
             string author = bookAuthorSearchBox.Text;
-            string sqlQuery = "SELECT * FROM books WHERE branch_id="+selectedBranch;
+            string sqlQuery = "SELECT * FROM books WHERE branch_id=" + selectedBranch;
 
             try
             {
@@ -429,7 +455,7 @@ namespace _366Project
                     return count > 0;
                 }
 
-               
+
             }
         }
 
@@ -502,12 +528,13 @@ namespace _366Project
             }
         }
 
+
         //Add a Book
 
         private void btnAddBook_Click(object sender, EventArgs e)
         {
-            string title ="";
-            string author ="";
+            string title = "";
+            string author = "";
             int isbn;
             int branchID;
             int rating;
@@ -521,7 +548,7 @@ namespace _366Project
             }
             if (!string.IsNullOrWhiteSpace(txtAddAuthor.Text))
             {
-                 author = txtAddAuthor.Text;
+                author = txtAddAuthor.Text;
             }
             if (int.TryParse(txtAddISBN.Text, out isbn) == true)
             {
@@ -567,7 +594,7 @@ namespace _366Project
 
                     using (NpgsqlCommand cmd = new NpgsqlCommand(addBookQuery, connection))
                     {
-                       
+
                         cmd.Parameters.AddWithValue("@title", $"{title}");
                         cmd.Parameters.AddWithValue("@author", $"{author}");
                         cmd.Parameters.AddWithValue("@ISBN", isbn);
@@ -589,7 +616,7 @@ namespace _366Project
             }
 
         }
-        
+
         //Delete a Book
         private void btnDeleteBook_Click(object sender, EventArgs e)
         {
@@ -616,9 +643,9 @@ namespace _366Project
 
                     using (NpgsqlCommand cmd = new NpgsqlCommand(deleteBookQuery, connection))
                     {
-                        
+
                         cmd.Parameters.AddWithValue("@book_id", bookId);
-  
+
 
                         // Execute the query
                         cmd.ExecuteNonQuery();
@@ -638,8 +665,8 @@ namespace _366Project
         //Create a Member
         private void btnCreateMember_Click(object sender, EventArgs e)
         {
-            string name ="";
-            string address ="";
+            string name = "";
+            string address = "";
             int branchID;
 
 
@@ -719,7 +746,7 @@ namespace _366Project
                 MessageBox.Show("Enter valid number");
             }
 
-            
+
             string deleteMemberQuery = "Delete from members Where member_id = @member_id";
 
             try
@@ -760,7 +787,7 @@ namespace _366Project
 
 
             //validation
-            if(decimal.TryParse(txtCreateEmployeeSalary.Text, out salary) == true)
+            if (decimal.TryParse(txtCreateEmployeeSalary.Text, out salary) == true)
             {
                 salary = Convert.ToDecimal(txtCreateEmployeeSalary.Text);
             }
@@ -770,7 +797,7 @@ namespace _366Project
             }
             else
                 MessageBox.Show("Enter valid title");
-            if(int.TryParse(txtCreateEmployeeSupervisorID.Text, out supervisorID) == true)
+            if (int.TryParse(txtCreateEmployeeSupervisorID.Text, out supervisorID) == true)
             {
                 supervisorID = Convert.ToInt32(txtCreateEmployeeSupervisorID.Text);
 
@@ -1042,7 +1069,7 @@ namespace _366Project
                         cmd.Parameters.AddWithValue("@member_id", memberID);
                         cmd.Parameters.AddWithValue("@book_id", bookID);
                         cmd.Parameters.AddWithValue("@late_by_date", lateReturnDate);
-                        
+
 
 
                         // Execute the query
@@ -1057,7 +1084,161 @@ namespace _366Project
                 MessageBox.Show("PostgreSQL Connection Error: " + ex.Message);
             }
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'project366DataSet.branch' table. You can move, or remove it, as needed.
+            this.branchTableAdapter.Fill(this.project366DataSet.branch);
+            // TODO: This line of code loads data into the 'project366DataSet.checkedoutbooks' table. You can move, or remove it, as needed.
+            this.checkedoutbooksTableAdapter.Fill(this.project366DataSet.checkedoutbooks);
+            // TODO: This line of code loads data into the 'project366DataSet.employee' table. You can move, or remove it, as needed.
+            this.employeeTableAdapter.Fill(this.project366DataSet.employee);
+            // TODO: This line of code loads data into the 'project366DataSet.members' table. You can move, or remove it, as needed.
+            this.membersTableAdapter.Fill(this.project366DataSet.members);
+            // TODO: This line of code loads data into the 'project366DataSet.books' table. You can move, or remove it, as needed.
+            this.booksTableAdapter.Fill(this.project366DataSet.books);
+
+        }
+
+        private void cartGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+
+        private void addToCart_Click_1(object sender, EventArgs e)
+        {
+
+            // Get the selected book_id from the selected row
+            if (checkOutGridView.SelectedRows.Count > 0)
+            {
+                int selectedBookId = Convert.ToInt32(checkOutGridView.SelectedRows[0].Cells[0].Value);
+
+                // Add the selected book_id to the list
+                selectedBookIds.Add(selectedBookId);
+                populatePage();
+            }
+        }
+
+        private void removeFromCartButton_Click(object sender, EventArgs e)
+        {
+            if (cartGridView.SelectedRows.Count > 0)
+            {
+                // Iterate through selected rows in the DataGridView
+                foreach (DataGridViewRow selectedRow in cartGridView.SelectedRows)
+                {
+                    // Get the book_id from the selected row
+                    int selectedBookId = Convert.ToInt32(selectedRow.Cells[0].Value);
+
+                    // Remove the selected book_id from the list
+                    selectedBookIds.Remove(selectedBookId);
+                    populatePage();
+                }
+            }
+        }
+
+        private void label35_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkOutButton_Click(object sender, EventArgs e)
+        {
+            // Assuming you have a connection already established
+            using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
+            {
+                // Open the connection
+                connection.Open();
+
+                // Validate and get the integer value
+                if (int.TryParse(checkOutMemberBox.Text, out int enteredValue))
+                {
+                    // Check if the entered value already exists in otherTable
+                    if (!DoesIdExist(connection, "members", "member_id", enteredValue))
+                    {
+                        MessageBox.Show("ID doesnt exist in members. Please enter a different ID.");
+                        return; // Exit the method if the ID doesnt exists
+                    }
+
+                    foreach (int selectedBookId in selectedBookIds)
+                    {
+                        // Construct the SQL query using parameters for book_id and the entered value
+                        string sqlQuery = "INSERT INTO checkedoutbooks (member_id, book_id, late_by_date) VALUES (@MemberId, @BookId, @LateByDate)";
+
+                        using (NpgsqlCommand command = new NpgsqlCommand(sqlQuery, connection))
+                        {
+                            // Add parameters
+                            command.Parameters.AddWithValue("@MemberId", int.Parse(checkOutMemberBox.Text));
+                            command.Parameters.AddWithValue("@BookId", selectedBookId);
+                            command.Parameters.AddWithValue("@LateByDate", DateTime.Now.AddDays(7));
+
+                            // Execute the query
+                            command.ExecuteNonQuery();
+
+
+                        }
+                    }
+                }
+                else
+                {
+                    // Handle the case where the entered value is not an integer
+                    MessageBox.Show("Please enter a valid integer in textBox1.");
+                }
+            }
+
+            // Optionally, display a message or perform other actions
+            MessageBox.Show("Entries added to the database.");
+            selectedBookIds = new List<int>();
+            populatePage();
+        }
+
+        private bool DoesIdExist(NpgsqlConnection connection, string tableName, string idColumnName, int idValue)
+        {
+            string query = $"SELECT COUNT(*) FROM {tableName} WHERE {idColumnName} = @IdValue";
+
+            using (NpgsqlCommand command = new NpgsqlCommand(query, connection))
+            {
+                command.Parameters.AddWithValue("@IdValue", idValue);
+                int count = Convert.ToInt32(command.ExecuteScalar());
+
+                return count > 0;
+            }
+        }
+
+        private void returnButton_Click(object sender, EventArgs e)
+        {
+            if (checkedOutGridView.SelectedRows.Count > 0)
+            {
+                string column1Value = checkedOutGridView.SelectedRows[0].Cells[0].Value.ToString();
+                string column2Value = checkedOutGridView.SelectedRows[0].Cells[1].Value.ToString();
+
+                using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
+                {
+                    // Open the connection
+                    connection.Open();
+
+                    // Construct the DELETE query based on the values from the selected row
+                    string deleteQuery = $"DELETE FROM checkedoutbooks WHERE member_id = @MemberId AND book_id = @BookId";
+
+                    using (NpgsqlCommand command = new NpgsqlCommand(deleteQuery, connection))
+                    {
+                        // Add parameters for the values
+                        command.Parameters.AddWithValue("@MemberId", int.Parse(column1Value));
+                        command.Parameters.AddWithValue("@BookId", int.Parse(column2Value));
+
+                        // Execute the DELETE query
+                        command.ExecuteNonQuery();
+
+                        
+                        populatePage();
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a row before clicking the button.");
+            }
+        }
     }
-
-
-}
+        }
+    
