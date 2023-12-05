@@ -25,7 +25,7 @@ namespace _366Project
         public Form1()
         {
             InitializeComponent();
-            connectionString = "Server=localhost;Port=5432;User Id=postgres;Password=0655;Database=Library;"; ;
+            connectionString = "Server=localhost;Port=5432;User Id=postgres;Password=password;Database=project366;"; ;
 
 
 
@@ -1057,6 +1057,80 @@ namespace _366Project
                 MessageBox.Show("PostgreSQL Connection Error: " + ex.Message);
             }
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'project366DataSet.books' table. You can move, or remove it, as needed.
+            this.booksTableAdapter.Fill(this.project366DataSet.books);
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // Assuming you have a connection already established
+            using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
+            {
+                // Open the connection
+                connection.Open();
+
+                // Validate and get the integer value from memberIdInputCheckout
+                if (int.TryParse(memberIdInputCheckout.Text, out int memberId))
+                {
+                    // Assuming dataGridView1 is your DataGridView
+                    if (checkOutGridView.SelectedRows.Count > 0)
+                    {
+                        // Get the book_id from the first column of the selected row
+                        int bookId = Convert.ToInt32(checkOutGridView.SelectedRows[0].Cells[0].Value);
+
+                        // Check if the entered value already exists in otherTable
+                        if (!DoesIdExist(connection, "otherTable", "other_id", memberId))
+                        {
+                            MessageBox.Show("ID doesn't exist in members. Please enter a different ID.");
+                            return; // Exit the method if the ID doesn't exist
+                        }
+
+                        // Construct the SQL query using parameters for member_id, book_id, and late_by_date
+                        string sqlQuery = "INSERT INTO checkedoutbooks (member_id, book_id, late_by_date) VALUES (@MemberId, @BookId, @LateByDate)";
+
+                        using (NpgsqlCommand command = new NpgsqlCommand(sqlQuery, connection))
+                        {
+                            // Add parameters
+                            command.Parameters.AddWithValue("@MemberId", memberId);
+                            command.Parameters.AddWithValue("@BookId", bookId);
+                            command.Parameters.AddWithValue("@LateByDate", DateTime.Now.AddDays(7));
+
+                            // Execute the query
+                            command.ExecuteNonQuery();
+                            populatePage();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please select a row in the DataGridView before clicking the button.");
+                    }
+                }
+                else
+                {
+                    // Handle the case where the entered value is not an integer
+                    MessageBox.Show("Please enter a valid integer in memberIdInputCheckout.");
+                }
+            }
+        }
+
+        private bool DoesIdExist(NpgsqlConnection connection, string tableName, string idColumnName, int idValue)
+        {
+            string query = $"SELECT COUNT(*) FROM members WHERE member_id = @IdValue";
+
+            using (NpgsqlCommand command = new NpgsqlCommand(query, connection))
+            {
+                command.Parameters.AddWithValue("@IdValue", idValue);
+                int count = Convert.ToInt32(command.ExecuteScalar());
+
+                return count > 0;
+            }
+        }
+
+        
     }
 
 
