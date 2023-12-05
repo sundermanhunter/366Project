@@ -153,8 +153,7 @@
             this.copiesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.copiesavilableDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.booksBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.project366DataSet = new _366Project.project366DataSet();
-            this.booksTableAdapter = new _366Project.project366DataSetTableAdapters.booksTableAdapter();
+      
             this.tabControl.SuspendLayout();
             this.booksTab.SuspendLayout();
             this.gpDeleteBook.SuspendLayout();
@@ -182,7 +181,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.branchGridView)).BeginInit();
             this.groupBox10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.booksBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.project366DataSet)).BeginInit();
+            
             this.SuspendLayout();
             // 
             // tabControl
@@ -1341,16 +1340,15 @@
             // booksBindingSource
             // 
             this.booksBindingSource.DataMember = "books";
-            this.booksBindingSource.DataSource = this.project366DataSet;
+            
             // 
             // project366DataSet
             // 
-            this.project366DataSet.DataSetName = "project366DataSet";
-            this.project366DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+           
             // 
             // booksTableAdapter
             // 
-            this.booksTableAdapter.ClearBeforeFill = true;
+         
             // 
             // Form1
             // 
@@ -1402,7 +1400,7 @@
             this.groupBox10.ResumeLayout(false);
             this.groupBox10.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.booksBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.project366DataSet)).EndInit();
+           
             this.ResumeLayout(false);
 
         }
@@ -1523,9 +1521,7 @@
         private System.Windows.Forms.Button checkoutButton;
         private System.Windows.Forms.TextBox memberIdInputCheckout;
         private System.Windows.Forms.Label label35;
-        private project366DataSet project366DataSet;
         private System.Windows.Forms.BindingSource booksBindingSource;
-        private project366DataSetTableAdapters.booksTableAdapter booksTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn bookidDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn titleDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn authorDataGridViewTextBoxColumn;

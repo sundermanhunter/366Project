@@ -189,6 +189,14 @@ namespace _366Project
                         checkedOutGridView.DataSource = dt;
                     }
 
+                    
+                    sqlQuery = "SELECT * FROM books WHERE branch_id=" + selectedBranch.ToString();
+                    using (NpgsqlDataAdapter adapter = new NpgsqlDataAdapter(sqlQuery, connection))
+                    {
+                        DataTable dt = new DataTable();
+                        adapter.Fill(dt);
+                        checkOutGridView.DataSource = dt;
+                    }
                 }
 
             }
@@ -1061,7 +1069,7 @@ namespace _366Project
         private void Form1_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'project366DataSet.books' table. You can move, or remove it, as needed.
-            this.booksTableAdapter.Fill(this.project366DataSet.books);
+           
 
         }
 
