@@ -25,7 +25,7 @@ namespace _366Project
         public Form1()
         {
             InitializeComponent();
-            connectionString = "Server=localhost;Port=5432;User Id=postgres;Password=password;Database=project366;"; ;
+            connectionString = "Server=localhost;Port=5433;User Id=postgres;Password=Wilson03!;Database=366Database;"; ;
 
 
 

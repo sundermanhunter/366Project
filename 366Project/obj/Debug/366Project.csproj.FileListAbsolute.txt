@@ -127,3 +127,10 @@ C:\Users\Adam\Source\Repos\366Projectfinal\366Project\obj\Debug\366Project.cspro
 C:\Users\Adam\Source\Repos\366Projectfinal\366Project\obj\Debug\366Project.csproj.CopyComplete
 C:\Users\Adam\Source\Repos\366Projectfinal\366Project\obj\Debug\366Project.exe
 C:\Users\Adam\Source\Repos\366Projectfinal\366Project\obj\Debug\366Project.pdb
+C:\Users\geron\Source\Repos\sundermanhunter\366Project\366Project\obj\Debug\366Project.csproj.AssemblyReference.cache
+C:\Users\geron\Source\Repos\sundermanhunter\366Project\366Project\obj\Debug\_366Project.Form1.resources
+C:\Users\geron\Source\Repos\sundermanhunter\366Project\366Project\obj\Debug\_366Project.Properties.Resources.resources
+C:\Users\geron\Source\Repos\sundermanhunter\366Project\366Project\obj\Debug\366Project.csproj.GenerateResource.cache
+C:\Users\geron\Source\Repos\sundermanhunter\366Project\366Project\obj\Debug\366Project.csproj.CoreCompileInputs.cache
+C:\Users\geron\Source\Repos\sundermanhunter\366Project\366Project\obj\Debug\366Project.exe
+C:\Users\geron\Source\Repos\sundermanhunter\366Project\366Project\obj\Debug\366Project.pdb

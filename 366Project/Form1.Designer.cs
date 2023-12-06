@@ -153,8 +153,8 @@
             this.copiesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.copiesavilableDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.booksBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.project366DataSet = new _366Project.project366DataSet();
-            this.booksTableAdapter = new _366Project.project366DataSetTableAdapters.booksTableAdapter();
+           // this.project366DataSet = new _366Project.project366DataSet();
+           // this.booksTableAdapter = new _366Project.project366DataSetTableAdapters.booksTableAdapter();
             this.tabControl.SuspendLayout();
             this.booksTab.SuspendLayout();
             this.gpDeleteBook.SuspendLayout();
@@ -1341,16 +1341,16 @@
             // booksBindingSource
             // 
             this.booksBindingSource.DataMember = "books";
-            this.booksBindingSource.DataSource = this.project366DataSet;
+   //         this.booksBindingSource.DataSource = this.366DatabaseDataSet;
             // 
             // project366DataSet
             // 
-            this.project366DataSet.DataSetName = "project366DataSet";
-            this.project366DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+   //         this.project366DataSet.DataSetName = "project366DataSet";
+   //         this.project366DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // booksTableAdapter
             // 
-            this.booksTableAdapter.ClearBeforeFill = true;
+//            this.booksTableAdapter.ClearBeforeFill = true;
             // 
             // Form1
             // 
