@@ -145,6 +145,7 @@ namespace _366Project
                         adapter.Fill(dt);
 
                         booksGridView.DataSource = dt;
+                        
                     }
 
                     //members gridview population
@@ -155,6 +156,7 @@ namespace _366Project
                         adapter.Fill(dt);
 
                         membersGridView.DataSource = dt;
+                       
                     }
 
                     //employee gridview population
@@ -165,6 +167,7 @@ namespace _366Project
                         adapter.Fill(dt);
 
                         employeeGridView.DataSource = dt;
+                        
                     }
 
                     connection.Close();
@@ -1138,7 +1141,262 @@ namespace _366Project
             }
         }
 
-        
+        private void btnDeleteAdmin_Click(object sender, EventArgs e)
+        {
+            int book2Id;
+
+            //validation
+            if (int.TryParse(txtAdminBookDelete.Text, out book2Id
+                ) == true)
+            {
+                book2Id = Convert.ToInt32(txtAdminBookDelete.Text);
+            }
+            else
+            {
+                MessageBox.Show("Enter valid number");
+            }
+
+            string deleteAdminBookQuery = "Delete from books Where book_id = @book_id";
+
+            try
+            {
+                using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    using (NpgsqlCommand cmd = new NpgsqlCommand(deleteAdminBookQuery, connection))
+                    {
+
+                        cmd.Parameters.AddWithValue("@book_id", book2Id);
+
+
+                        // Execute the query
+                        cmd.ExecuteNonQuery();
+                        connection.Close();
+
+                        populatePage();
+                    }
+                }
+            }
+            catch (NpgsqlException ex)
+            {
+                MessageBox.Show("PostgreSQL Connection Error: " + ex.Message);
+            }
+
+
+            int member2ID;
+
+            //validation
+            if (int.TryParse(txtAdminMemDelete.Text, out member2ID) == true)
+            {
+                member2ID = Convert.ToInt32(txtAdminMemDelete.Text);
+            }
+            else
+            {
+                MessageBox.Show("Enter valid number");
+            }
+
+
+            string deleteAdminMemberQuery = "Delete from members Where member_id = @member_id";
+
+            try
+            {
+                using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
+                {
+                    connection.Open();
+
+
+
+                    using (NpgsqlCommand cmd = new NpgsqlCommand(deleteAdminMemberQuery, connection))
+                    {
+
+                        cmd.Parameters.AddWithValue("@member_id", member2ID);
+
+
+                        // Execute the query
+                        cmd.ExecuteNonQuery();
+                        connection.Close();
+
+                        populatePage();
+                    }
+                }
+            }
+            catch (NpgsqlException ex)
+            {
+                MessageBox.Show("PostgreSQL Connection Error: " + ex.Message);
+            }
+
+
+            int employee2ID;
+            //validation
+            if (int.TryParse(txtAdminEmpDelete.Text, out employee2ID) == true)
+            {
+                employee2ID = Convert.ToInt32(txtAdminEmpDelete.Text);
+            }
+            else
+            {
+                MessageBox.Show("Enter valid number");
+            }
+
+
+            string deleteAdminEmployeeQuery = "Delete from employee Where emp_id = @employeeID";
+
+            try
+            {
+                using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
+                {
+                    connection.Open();
+
+
+
+                    using (NpgsqlCommand cmd = new NpgsqlCommand(deleteAdminEmployeeQuery, connection))
+                    {
+
+                        cmd.Parameters.AddWithValue("@employeeID", employee2ID);
+
+
+                        // Execute the query
+                        cmd.ExecuteNonQuery();
+                        connection.Close();
+
+                        populatePage();
+                    }
+                }
+            }
+            catch (NpgsqlException ex)
+            {
+                MessageBox.Show("PostgreSQL Connection Error: " + ex.Message);
+            }
+        }
+
+        private void btnAdminSearch_Click(object sender, EventArgs e)
+        {
+            int id2;
+            string sqlAdminQuery = "SELECT * FROM books WHERE branch_id=" + selectedBranch;
+
+            try
+            {
+                using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    // Checking and building the SQL query based on the provided values
+                    if (int.TryParse(txtAdminBookSearch.Text, out id2))
+                    {
+                        // Append condition to the query if 'id' is provided
+                        sqlAdminQuery += $" AND book_id = {id2}";
+                    }
+
+                    try
+                    {
+                        using (NpgsqlDataAdapter adapter = new NpgsqlDataAdapter(sqlAdminQuery, connection))
+                        {
+                            DataTable dtAdmin = new DataTable();
+                            adapter.Fill(dtAdmin);
+                            adminGridView.DataSource = dtAdmin;
+                        }
+                    }
+                    catch (NpgsqlException ex)
+                    {
+                        MessageBox.Show("PostgreSQL Connection Error: " + ex.Message);
+                        MessageBox.Show(sqlAdminQuery);
+                    }
+
+                    connection.Close();
+
+                }
+            }
+            catch (NpgsqlException ex)
+            {
+                MessageBox.Show("PostgreSQL Connection Error: " + ex.Message);
+            }
+
+
+            int adminMember_id;
+            string sqlQuery = "SELECT * FROM members WHERE branch_id=" + selectedBranch;
+
+            try
+            {
+                using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    // Checking and building the SQL query based on the provided values
+                    if (int.TryParse(txtAdminMemSearch.Text, out adminMember_id))
+                    {
+                        // Append condition to the query if 'member_id' is provided
+                        sqlQuery += $" AND member_id = {adminMember_id}";
+                    }                 
+
+                    try
+                    {
+                        using (NpgsqlDataAdapter adapter = new NpgsqlDataAdapter(sqlQuery, connection))
+                        {
+                            DataTable dtAdminMem = new DataTable();
+                            adapter.Fill(dtAdminMem);
+                            // Assuming booksGridView is a DataGridView
+                            membersGridView.DataSource = dtAdminMem;
+                        }
+                    }
+                    catch (NpgsqlException ex)
+                    {
+                        MessageBox.Show("PostgreSQL Connection Error: " + ex.Message);
+                        MessageBox.Show(sqlQuery);
+                    }
+
+                    connection.Close();
+                }
+            }
+            catch (NpgsqlException ex)
+            {
+                MessageBox.Show("PostgreSQL Connection Error: " + ex.Message);
+            }
+
+            int adminEmpId;
+            string sqlAdminEmpQuery = "SELECT * FROM employee WHERE branch_id=" + selectedBranch;
+
+            try
+            {
+                using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    // Checking and building the SQL query based on the provided values
+                    if (int.TryParse(txtAdminEmpSearch.Text, out adminEmpId))
+                    {
+                        // Append condition to the query if 'empId' is provided
+                        sqlAdminEmpQuery += $" AND emp_id = {adminEmpId}";
+                    }
+                    try
+                    {
+                        using (NpgsqlDataAdapter adapter = new NpgsqlDataAdapter(sqlAdminEmpQuery, connection))
+                        {
+                            DataTable dtAdminEmp = new DataTable();
+                            adapter.Fill(dtAdminEmp);
+                            employeeGridView.DataSource = dtAdminEmp;
+                        }
+                    }
+                    catch (NpgsqlException ex)
+                    {
+                        MessageBox.Show("PostgreSQL Connection Error: " + ex.Message);
+                        MessageBox.Show(sqlAdminEmpQuery);
+                    }
+
+                    connection.Close();
+                }
+            }
+            catch (NpgsqlException ex)
+            {
+                MessageBox.Show("PostgreSQL Connection Error: " + ex.Message);
+            }
+
+
+        }
+
+        private void btnAdminClear_Click(object sender, EventArgs e)
+        {
+            populatePage();
+        }
     }
 
 
